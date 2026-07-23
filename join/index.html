@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Присоединиться к Mayas</title>
+<style>
+  :root {
+    --bg: #0d0d12;
+    --card: #16161e;
+    --text: #f2f2f5;
+    --muted: #9a9aa6;
+    --accent: #7c5cff;
+    --accent-hover: #6a4ce0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 0%, #1c1c28 0%, var(--bg) 60%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    padding: 24px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 36px 28px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #7c5cff, #4b2fd9);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p.sub { color: var(--muted); font-size: 14px; margin: 0 0 28px; line-height: 1.5; }
+  .code-badge {
+    display: inline-block;
+    background: rgba(124,92,255,0.12);
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    word-break: break-all;
+  }
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .btn {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    padding: 14px 10px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.05); }
+  .status { font-size: 12px; color: var(--muted); margin-top: 16px; min-height: 16px; }
+  .error {
+    color: var(--text);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <!-- контент подставляется скриптом ниже -->
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const card = document.getElementById('card');
+
+
+    const APK_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases';
+    const DEEP_LINK_SCHEME = code ? `mayas://join/${encodeURIComponent(code)}` : null;
+
+    if (!code) {
+      card.innerHTML = `
+        <div class="logo">M</div>
+        <h1>Ссылка недействительна</h1>
+        <p class="sub">В ссылке не найден код приглашения. Проверьте, что она скопирована полностью.</p>
+        <a class="btn btn-secondary" href="${APK_RELEASES_URL}">Перейти на страницу Mayas</a>
+      `;
+    } else {
+      card.innerHTML = `
+        <div class="logo">M</div>
+        <h1>Вас пригласили в Mayas</h1>
+        <p class="sub">Нажмите «Открыть в приложении» — если Mayas установлен, вы сразу попадёте в чат.</p>
+        <div class="code-badge">${escapeHtml(code)}</div>
+        <div class="btn-row">
+          <a class="btn btn-primary" id="openAppBtn" href="${DEEP_LINK_SCHEME}">Открыть в приложении</a>
+          <a class="btn btn-secondary" href="${APK_RELEASES_URL}">Скачать Маяс</a>
+        </div>
+        <div class="status" id="status"></div>
+      `;
+
+    
+      const statusEl = document.getElementById('status');
+      let triedAutoOpen = false;
+
+      function tryOpenApp() {
+        if (triedAutoOpen) return;
+        triedAutoOpen = true;
+        statusEl.textContent = 'Открываем приложение…';
+        window.location.href = DEEP_LINK_SCHEME;
+
+      
+        setTimeout(() => {
+          if (document.visibilityState === 'visible') {
+            statusEl.textContent = 'Приложение не установлено? Скачайте его ниже.';
+          }
+        }, 1500);
+      }
+
+      document.getElementById('openAppBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        tryOpenApp();
+      });
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>
