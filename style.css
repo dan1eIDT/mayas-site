@@ -181,6 +181,33 @@ nav a:hover {
   }
 }
 
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link-btn {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 9px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+@media (max-width: 480px) {
+  .nav-link-btn {
+    display: none;
+  }
+}
+
 /* Hero */
 
 .hero {
@@ -207,20 +234,6 @@ nav a:hover {
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 48px;
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  padding: 7px 14px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  color: var(--cyan);
-  margin-bottom: 22px;
 }
 
 .hero-left h1 {
@@ -325,7 +338,6 @@ nav a:hover {
 }
 
 .icon {
-  font-size: 26px;
   width: 50px;
   height: 50px;
   display: flex;
@@ -334,7 +346,13 @@ nav a:hover {
   border-radius: var(--radius-sm);
   background: var(--surface-2);
   border: 1px solid var(--border);
+  color: var(--cyan);
   margin-bottom: 18px;
+}
+
+.icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .card h3 {
@@ -509,8 +527,18 @@ nav a:hover {
 }
 
 .customization li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 15px;
   color: var(--text);
+}
+
+.customization li svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--cyan);
 }
 
 .profile-card {
