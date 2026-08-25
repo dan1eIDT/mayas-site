@@ -81,9 +81,9 @@
 
         <div class="hero-left">
 
-            <a href="https://github.com/dan1eIDT/Mayas/releases" class="version-badge" id="versionBadge" target="_blank" rel="noopener">
+            <a href="https://github.com/dan1eIDT/Mayas/releases" class="version-badge" id="versionBadge" target="_blank" rel="noopener" hidden>
                 <span class="version-dot"></span>
-                <span id="versionBadgeText" data-i18n="version_loading">Проверка версии…</span>
+                <span id="versionBadgeText"></span>
             </a>
 
             <h1 data-i18n-html="hero_title">
@@ -445,8 +445,6 @@
       download_btn: "Скачать APK",
       footer_terms: "Условия",
       nav_faq: "FAQ",
-      version_loading: "Проверка версии…",
-      version_error: "Смотреть релизы",
       faq_title: "Частые вопросы",
       faq_desc: "Всё, что стоит знать перед установкой.",
       faq_q1: "Mayas — это официальный Telegram?",
@@ -499,8 +497,6 @@
       download_btn: "Download APK",
       footer_terms: "Terms",
       nav_faq: "FAQ",
-      version_loading: "Checking version…",
-      version_error: "View releases",
       faq_title: "Frequently asked questions",
       faq_desc: "Everything worth knowing before you install.",
       faq_q1: "Is Mayas official Telegram?",
@@ -553,8 +549,6 @@
       download_btn: "Descargar APK",
       footer_terms: "Términos",
       nav_faq: "FAQ",
-      version_loading: "Comprobando versión…",
-      version_error: "Ver lanzamientos",
       faq_title: "Preguntas frecuentes",
       faq_desc: "Todo lo que conviene saber antes de instalar.",
       faq_q1: "¿Mayas es el Telegram oficial?",
@@ -607,8 +601,6 @@
       download_btn: "APK herunterladen",
       footer_terms: "Nutzungsbedingungen",
       nav_faq: "FAQ",
-      version_loading: "Version wird geprüft…",
-      version_error: "Releases ansehen",
       faq_title: "Häufig gestellte Fragen",
       faq_desc: "Alles Wichtige vor der Installation.",
       faq_q1: "Ist Mayas das offizielle Telegram?",
@@ -661,8 +653,6 @@
       download_btn: "APKをダウンロード",
       footer_terms: "利用規約",
       nav_faq: "FAQ",
-      version_loading: "バージョン確認中…",
-      version_error: "リリースを見る",
       faq_title: "よくある質問",
       faq_desc: "インストール前に知っておきたいこと。",
       faq_q1: "Mayasは公式のTelegramですか？",
@@ -734,21 +724,23 @@
     }
   });
 
-  // Latest release badge, pulled live from GitHub
+  // Latest release badge, pulled live from GitHub — shown only if the fetch actually succeeds
   (async () => {
+    const badge = document.getElementById('versionBadge');
     const badgeText = document.getElementById('versionBadgeText');
     try {
       const res = await fetch('https://api.github.com/repos/dan1eIDT/Mayas/releases/latest');
       if (!res.ok) throw new Error('no releases');
       const data = await res.json();
       const version = data.tag_name || data.name;
+      if (!version) throw new Error('no version');
       const downloads = (data.assets || []).reduce((sum, a) => sum + (a.download_count || 0), 0);
       badgeText.textContent = downloads > 0
-        ? `${version} · ${downloads.toLocaleString()} ⬇`
-        : `${version}`;
+        ? `${version} · ${downloads.toLocaleString()} скачиваний`
+        : version;
+      badge.hidden = false;
     } catch (e) {
-      const dict = translations[langSelect.value] || translations.ru;
-      badgeText.textContent = dict.version_error;
+      // API недоступен или релизов ещё нет — просто не показываем бейдж
     }
   })();
 </script>

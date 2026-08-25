@@ -391,6 +391,12 @@ nav a:hover {
   color: transparent;
 }
 
+[data-theme="light"] .hero-left h1 {
+  background: linear-gradient(180deg, #0a0a0a, #4a4a4a);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 .hero-left p {
   font-size: 18px;
   max-width: 460px;
