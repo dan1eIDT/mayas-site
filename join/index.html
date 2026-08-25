@@ -3,164 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Присоединиться к Mayas</title>
+<title>Mayas — Присоединиться</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0d12;
-    --card: #16161e;
-    --text: #f2f2f5;
-    --muted: #9a9aa6;
-    --accent: #7c5cff;
-    --accent-hover: #6a4ce0;
+  :root{
+    --bg:#000000;
+    --panel:#050409;
+    --violet:#8B5CF6;
+    --violet-bright:#B39DFF;
+    --violet-deep:#4C2889;
+    --violet-glow:rgba(139,92,246,0.35);
+    --line:rgba(179,157,255,0.14);
+    --line-strong:rgba(179,157,255,0.30);
+    --text:#F5F3FA;
+    --muted:#8D84A8;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle at 50% 0%, #1c1c28 0%, var(--bg) 60%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--text);
-    padding: 24px;
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    overflow:hidden;
   }
-  .card {
-    background: var(--card);
-    border-radius: 20px;
-    padding: 36px 28px;
-    max-width: 380px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.06);
+  a{ color:inherit; text-decoration:none; }
+  h1,.display{ font-family:'Bricolage Grotesque', sans-serif; }
+
+  .screen{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    height:100vh;
+    width:100%;
   }
-  .logo {
-    width: 64px;
-    height: 64px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #7c5cff, #4b2fd9);
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 700;
+
+  /* LEFT — giant logo panel */
+  .stage{
+    position:relative;
+    background:var(--panel);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    border-right:1px solid var(--line);
   }
-  h1 { font-size: 20px; margin: 0 0 8px; }
-  p.sub { color: var(--muted); font-size: 14px; margin: 0 0 28px; line-height: 1.5; }
-  .code-badge {
-    display: inline-block;
-    background: rgba(124,92,255,0.12);
-    color: var(--accent);
-    font-family: monospace;
-    font-size: 13px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    margin-bottom: 24px;
+  .stage::before{
+    content:"";
+    position:absolute; inset:-20%;
+    background:
+      radial-gradient(circle at 32% 38%, var(--violet-glow), transparent 55%),
+      radial-gradient(circle at 75% 70%, rgba(76,40,137,0.30), transparent 50%);
+    animation:swell 10s ease-in-out infinite alternate;
+  }
+  @keyframes swell{ to{ transform:scale(1.12) translate(2%,-2%); } }
+  .stage::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:.35;
+    -webkit-mask-image:radial-gradient(circle at 50% 50%, black 0%, transparent 70%);
+            mask-image:radial-gradient(circle at 50% 50%, black 0%, transparent 70%);
+  }
+
+  /* Большой силуэт буквы M сзади */
+  .stage-code{
+    position:absolute; z-index:0;
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:800;
+    font-size:min(46vw, 620px);
+    line-height:1;
+    letter-spacing:-0.06em;
+    color:transparent;
+    -webkit-text-stroke:1px var(--line-strong);
+    user-select:none;
+    white-space:nowrap;
+  }
+
+  /* Светильник-логотип по центру */
+  .glyph{
+    position:relative; z-index:1;
+    width:min(40vw, 320px); height:min(40vw, 320px);
+    border-radius:28%;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, #180b38, #000000);
+    box-shadow:
+      0 0 0 1px var(--line-strong),
+      0 60px 140px -40px var(--violet-glow),
+      0 0 180px -30px var(--violet-glow);
+    animation:breathe 5s ease-in-out infinite;
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-size:120px;
+    font-weight:800;
+    color:var(--text);
+    text-shadow: 0 0 30px var(--violet-bright);
+  }
+  @keyframes breathe{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.035); } }
+
+  /* RIGHT — content panel */
+  .panel{
+    display:flex; align-items:center; justify-content:center;
+    padding:48px;
+    position:relative;
+  }
+  .panel-inner{ width:100%; max-width:380px; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--violet-bright);
+    border:1px solid var(--line-strong); border-radius:999px;
+    padding:5px 13px; margin-bottom:26px;
     word-break: break-all;
   }
-  .btn-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--violet-bright); flex-shrink: 0; }
+
+  .panel h1{
+    font-size:clamp(28px,4vw,36px); font-weight:800;
+    letter-spacing:-0.02em; line-height:1.1;
+    margin-bottom:16px;
   }
-  .btn {
-    display: block;
-    flex: 1;
-    min-width: 0;
-    padding: 14px 10px;
-    border-radius: 12px;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.15s ease;
-    white-space: nowrap;
+  .panel p.sub{
+    color:var(--muted); font-size:15px; line-height:1.6;
+    margin-bottom:34px;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
+
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%;
+    padding:14px 20px; border-radius:999px;
+    font-size:15px; font-weight:600;
+    border:1px solid var(--line-strong);
+    transition:all .25s var(--ease);
+    margin-bottom:12px;
+    cursor:pointer;
   }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid rgba(255,255,255,0.15);
+  .btn-primary{ background:var(--text); color:#000; border-color:var(--text); }
+  .btn-primary:hover{ background:var(--violet-bright); border-color:var(--violet-bright); transform:translateY(-2px); box-shadow:0 10px 28px -10px var(--violet-glow); }
+  .btn-ghost{ color:var(--text); background:rgba(255,255,255,0.02); }
+  .btn-ghost:hover{ border-color:var(--violet-bright); color:var(--violet-bright); transform:translateY(-2px); }
+
+  .status {
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--violet-bright);
+    text-align:center;
+    margin-top:16px;
+    min-height:18px;
   }
-  .btn-secondary:hover { background: rgba(255,255,255,0.05); }
-  .status { font-size: 12px; color: var(--muted); margin-top: 16px; min-height: 16px; }
-  .error {
-    color: var(--text);
-    font-size: 14px;
+
+  .panel-logo{
+    display:none;
+    width:42px; height:42px; border-radius:12px;
+    background:#000; box-shadow:0 0 0 1px var(--line-strong);
+    margin-bottom:24px;
+    align-items:center; justify-content:center;
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-size:22px; font-weight:800; color:var(--text);
+  }
+
+  /* mobile */
+  @media(max-width:860px){
+    .screen{ grid-template-columns:1fr; grid-template-rows:auto 1fr; height:auto; min-height:100vh; }
+    body{ overflow-y:auto; }
+    .stage{ height:32vh; min-height:220px; border-right:none; border-bottom:1px solid var(--line); }
+    .glyph{ width:110px; height:110px; font-size:48px; }
+    .panel{ padding:40px 24px 56px; }
+    .panel-logo{ display:flex; }
   }
 </style>
 </head>
 <body>
 
-  <div class="card" id="card">
-    <!-- контент подставляется скриптом ниже -->
+<div class="screen">
+  <div class="stage">
+    <div class="stage-code">M</div>
+    <div class="glyph">M</div>
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-    const card = document.getElementById('card');
+  <div class="panel">
+    <div class="panel-inner" id="card">
+      <!-- Контент подставится JS-скриптом -->
+    </div>
+  </div>
+</div>
 
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const card = document.getElementById('card');
 
-    const APK_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases';
-    const DEEP_LINK_SCHEME = code ? `mayas://join/${encodeURIComponent(code)}` : null;
+  const APK_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases';
+  const DEEP_LINK_SCHEME = code ? `mayas://join/${encodeURIComponent(code)}` : null;
 
-    if (!code) {
-      card.innerHTML = `
-        <div class="logo">M</div>
-        <h1>Ссылка недействительна</h1>
-        <p class="sub">В ссылке не найден код приглашения. Проверьте, что она скопирована полностью.</p>
-        <a class="btn btn-secondary" href="${APK_RELEASES_URL}">Перейти на страницу Mayas</a>
-      `;
-    } else {
-      card.innerHTML = `
-        <div class="logo">M</div>
-        <h1>Вас пригласили в Mayas</h1>
-        <p class="sub">Нажмите «Открыть в приложении» — если Mayas установлен, вы сразу попадёте в чат.</p>
-        <div class="code-badge">${escapeHtml(code)}</div>
-        <div class="btn-row">
-          <a class="btn btn-primary" id="openAppBtn" href="${DEEP_LINK_SCHEME}">Открыть в приложении</a>
-          <a class="btn btn-secondary" href="${APK_RELEASES_URL}">Скачать Маяс</a>
-        </div>
-        <div class="status" id="status"></div>
-      `;
-
-    
-      const statusEl = document.getElementById('status');
-      let triedAutoOpen = false;
-
-      function tryOpenApp() {
-        if (triedAutoOpen) return;
-        triedAutoOpen = true;
-        statusEl.textContent = 'Открываем приложение…';
-        window.location.href = DEEP_LINK_SCHEME;
-
+  if (!code) {
+    card.innerHTML = `
+      <div class="panel-logo">M</div>
+      <div class="eyebrow"><span class="dot"></span> ОШИБКА ССЫЛКИ</div>
+      <h1>Ссылка недействительна</h1>
+      <p class="sub">В URL не найден код приглашения. Проверьте, что вы скопировали ссылку полностью.</p>
+      <a class="btn btn-ghost" href="${APK_RELEASES_URL}">Страница Mayas на GitHub</a>
+    `;
+  } else {
+    card.innerHTML = `
+      <div class="panel-logo">M</div>
+      <div class="eyebrow"><span class="dot"></span> КОД: ${escapeHtml(code)}</div>
+      <h1>Приглашение в Mayas</h1>
+      <p class="sub">Нажмите «Открыть в приложении». Если Mayas установлен, вы сразу перейдёте в нужный чат.</p>
       
-        setTimeout(() => {
-          if (document.visibilityState === 'visible') {
-            statusEl.textContent = 'Приложение не установлено? Скачайте его ниже.';
-          }
-        }, 1500);
-      }
+      <a class="btn btn-primary" id="openAppBtn" href="${DEEP_LINK_SCHEME}">Открыть в приложении</a>
+      <a class="btn btn-ghost" href="${APK_RELEASES_URL}">Скачать Mayas (APK)</a>
+      
+      <div class="status" id="status"></div>
+    `;
 
-      document.getElementById('openAppBtn').addEventListener('click', function (e) {
-        e.preventDefault();
-        tryOpenApp();
-      });
+    const statusEl = document.getElementById('status');
+    let triedAutoOpen = false;
+
+    function tryOpenApp() {
+      if (triedAutoOpen) return;
+      triedAutoOpen = true;
+      statusEl.textContent = 'Открываем приложение…';
+      window.location.href = DEEP_LINK_SCHEME;
+
+      setTimeout(() => {
+        if (document.visibilityState === 'visible') {
+          statusEl.textContent = 'Не открылось? Скачайте APK по кнопке выше.';
+        }
+      }, 1500);
     }
 
-    function escapeHtml(str) {
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-  </script>
+    document.getElementById('openAppBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      tryOpenApp();
+    });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+</script>
+
 </body>
 </html>
