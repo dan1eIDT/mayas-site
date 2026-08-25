@@ -7,8 +7,19 @@
     <title data-i18n="meta_title">Mayas</title>
 
     <meta name="description" data-i18n-attr="content" data-i18n="meta_description" content="Mayas — современный мессенджер с чатами, звонками, группами и кастомизацией профиля.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://dan1eidt.github.io/mayas-site/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mayas — мессенджер без границ">
+    <meta property="og:description" data-i18n-attr="content" data-i18n="meta_description" content="Mayas — современный мессенджер с чатами, звонками, группами и кастомизацией профиля.">
+    <meta property="og:image" content="https://dan1eidt.github.io/mayas-site/assets/screenshot8.png">
+    <meta property="og:url" content="https://dan1eidt.github.io/mayas-site/">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/png" href="assets/app_icon.png">
+    <link rel="apple-touch-icon" href="assets/app_icon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
@@ -31,9 +42,15 @@
             <a href="#screenshots" data-i18n="nav_screenshots">Скриншоты</a>
             <a href="#customization" data-i18n="nav_customization">Кастомизация</a>
             <a href="#download" data-i18n="nav_download">Скачать</a>
+            <a href="#faq" data-i18n="nav_faq">FAQ</a>
         </nav>
 
         <div class="nav-buttons">
+            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+
             <div class="lang-switch">
                 <select id="langSelect" aria-label="Language">
                     <option value="ru">RU · Русский</option>
@@ -63,6 +80,11 @@
     <div class="container hero-content">
 
         <div class="hero-left">
+
+            <a href="https://github.com/dan1eIDT/Mayas/releases" class="version-badge" id="versionBadge" target="_blank" rel="noopener">
+                <span class="version-dot"></span>
+                <span id="versionBadgeText" data-i18n="version_loading">Проверка версии…</span>
+            </a>
 
             <h1 data-i18n-html="hero_title">
                 Общение<br>
@@ -281,6 +303,63 @@
 
 </section>
 
+<section id="faq" class="faq">
+
+    <div class="container">
+
+        <div class="faq-head reveal">
+            <h2 data-i18n="faq_title">Частые вопросы</h2>
+            <p data-i18n="faq_desc">Всё, что стоит знать перед установкой.</p>
+        </div>
+
+        <div class="faq-list">
+
+            <details class="faq-item reveal">
+                <summary>
+                    <span data-i18n="faq_q1">Mayas — это официальный Telegram?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </summary>
+                <p data-i18n="faq_a1">Нет. Mayas — самостоятельный независимый проект, разрабатываемый с нуля. Он не связан с Telegram, WhatsApp или другими мессенджерами.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>
+                    <span data-i18n="faq_q2">На каких платформах доступен Mayas?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </summary>
+                <p data-i18n="faq_a2">Android — через APK из GitHub Releases, а также веб-версия, которая открывается прямо в браузере без установки.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>
+                    <span data-i18n="faq_q3">Сколько стоит Mayas?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </summary>
+                <p data-i18n="faq_a3">Приложение полностью бесплатно. Исходный код открыт и доступен на GitHub.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>
+                    <span data-i18n="faq_q4">Почему APK, а не Google Play?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </summary>
+                <p data-i18n="faq_a4">Mayas — молодой независимый проект, публикация в Google Play пока не выполнена. APK устанавливается напрямую и обновляется через GitHub Releases.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>
+                    <span data-i18n="faq_q5">Как сообщить об ошибке или предложить идею?</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </summary>
+                <p data-i18n="faq_a5">Через Issues в репозитории проекта на GitHub — ссылку можно найти в шапке сайта.</p>
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
 <section id="download" class="download">
 
     <div class="container">
@@ -364,7 +443,22 @@
       download_title: "Готов попробовать?",
       download_desc: "Скачай Mayas и присоединяйся уже сегодня.",
       download_btn: "Скачать APK",
-      footer_terms: "Условия"
+      footer_terms: "Условия",
+      nav_faq: "FAQ",
+      version_loading: "Проверка версии…",
+      version_error: "Смотреть релизы",
+      faq_title: "Частые вопросы",
+      faq_desc: "Всё, что стоит знать перед установкой.",
+      faq_q1: "Mayas — это официальный Telegram?",
+      faq_a1: "Нет. Mayas — самостоятельный независимый проект, разрабатываемый с нуля. Он не связан с Telegram, WhatsApp или другими мессенджерами.",
+      faq_q2: "На каких платформах доступен Mayas?",
+      faq_a2: "Android — через APK из GitHub Releases, а также веб-версия, которая открывается прямо в браузере без установки.",
+      faq_q3: "Сколько стоит Mayas?",
+      faq_a3: "Приложение полностью бесплатно. Исходный код открыт и доступен на GitHub.",
+      faq_q4: "Почему APK, а не Google Play?",
+      faq_a4: "Mayas — молодой независимый проект, публикация в Google Play пока не выполнена. APK устанавливается напрямую и обновляется через GitHub Releases.",
+      faq_q5: "Как сообщить об ошибке или предложить идею?",
+      faq_a5: "Через Issues в репозитории проекта на GitHub — ссылку можно найти в шапке сайта."
     },
     en: {
       meta_title: "Mayas",
@@ -403,7 +497,22 @@
       download_title: "Ready to try it?",
       download_desc: "Download Mayas and join today.",
       download_btn: "Download APK",
-      footer_terms: "Terms"
+      footer_terms: "Terms",
+      nav_faq: "FAQ",
+      version_loading: "Checking version…",
+      version_error: "View releases",
+      faq_title: "Frequently asked questions",
+      faq_desc: "Everything worth knowing before you install.",
+      faq_q1: "Is Mayas official Telegram?",
+      faq_a1: "No. Mayas is an independent project built from scratch. It's not affiliated with Telegram, WhatsApp, or any other messenger.",
+      faq_q2: "Which platforms does Mayas support?",
+      faq_a2: "Android via the APK from GitHub Releases, plus a web version that opens straight in your browser, no install needed.",
+      faq_q3: "How much does Mayas cost?",
+      faq_a3: "It's completely free. The source code is open and available on GitHub.",
+      faq_q4: "Why APK and not the Play Store?",
+      faq_a4: "Mayas is a young independent project and isn't published on Google Play yet. The APK installs directly and updates via GitHub Releases.",
+      faq_q5: "How do I report a bug or suggest an idea?",
+      faq_a5: "Open an Issue in the project's GitHub repository — the link is in the site header."
     },
     es: {
       meta_title: "Mayas",
@@ -442,7 +551,22 @@
       download_title: "¿Listo para probarlo?",
       download_desc: "Descarga Mayas y únete hoy mismo.",
       download_btn: "Descargar APK",
-      footer_terms: "Términos"
+      footer_terms: "Términos",
+      nav_faq: "FAQ",
+      version_loading: "Comprobando versión…",
+      version_error: "Ver lanzamientos",
+      faq_title: "Preguntas frecuentes",
+      faq_desc: "Todo lo que conviene saber antes de instalar.",
+      faq_q1: "¿Mayas es el Telegram oficial?",
+      faq_a1: "No. Mayas es un proyecto independiente creado desde cero. No está afiliado a Telegram, WhatsApp ni a ningún otro mensajero.",
+      faq_q2: "¿Qué plataformas admite Mayas?",
+      faq_a2: "Android mediante el APK de GitHub Releases, además de una versión web que se abre directamente en el navegador, sin instalación.",
+      faq_q3: "¿Cuánto cuesta Mayas?",
+      faq_a3: "Es completamente gratuito. El código fuente es abierto y está disponible en GitHub.",
+      faq_q4: "¿Por qué APK y no la Play Store?",
+      faq_a4: "Mayas es un proyecto independiente joven y aún no está publicado en Google Play. El APK se instala directamente y se actualiza mediante GitHub Releases.",
+      faq_q5: "¿Cómo reporto un error o sugiero una idea?",
+      faq_a5: "Abre un Issue en el repositorio de GitHub del proyecto; el enlace está en la cabecera del sitio."
     },
     de: {
       meta_title: "Mayas",
@@ -481,7 +605,22 @@
       download_title: "Bereit, es auszuprobieren?",
       download_desc: "Lade Mayas herunter und mach noch heute mit.",
       download_btn: "APK herunterladen",
-      footer_terms: "Nutzungsbedingungen"
+      footer_terms: "Nutzungsbedingungen",
+      nav_faq: "FAQ",
+      version_loading: "Version wird geprüft…",
+      version_error: "Releases ansehen",
+      faq_title: "Häufig gestellte Fragen",
+      faq_desc: "Alles Wichtige vor der Installation.",
+      faq_q1: "Ist Mayas das offizielle Telegram?",
+      faq_a1: "Nein. Mayas ist ein eigenständiges, von Grund auf entwickeltes Projekt. Es steht in keiner Verbindung zu Telegram, WhatsApp oder anderen Messengern.",
+      faq_q2: "Welche Plattformen unterstützt Mayas?",
+      faq_a2: "Android über die APK aus den GitHub Releases sowie eine Web-Version, die direkt im Browser läuft — ganz ohne Installation.",
+      faq_q3: "Was kostet Mayas?",
+      faq_a3: "Die App ist komplett kostenlos. Der Quellcode ist offen und auf GitHub verfügbar.",
+      faq_q4: "Warum APK statt Play Store?",
+      faq_a4: "Mayas ist ein junges, unabhängiges Projekt und noch nicht bei Google Play veröffentlicht. Die APK wird direkt installiert und über GitHub Releases aktualisiert.",
+      faq_q5: "Wie melde ich einen Fehler oder schlage eine Idee vor?",
+      faq_a5: "Über ein Issue im GitHub-Repository des Projekts — den Link findest du im Seitenkopf."
     },
     ja: {
       meta_title: "Mayas",
@@ -520,7 +659,22 @@
       download_title: "試してみますか？",
       download_desc: "Mayasをダウンロードして今すぐ参加しよう。",
       download_btn: "APKをダウンロード",
-      footer_terms: "利用規約"
+      footer_terms: "利用規約",
+      nav_faq: "FAQ",
+      version_loading: "バージョン確認中…",
+      version_error: "リリースを見る",
+      faq_title: "よくある質問",
+      faq_desc: "インストール前に知っておきたいこと。",
+      faq_q1: "Mayasは公式のTelegramですか？",
+      faq_a1: "いいえ。Mayasはゼロから開発された独立プロジェクトです。Telegram、WhatsAppなど他のメッセンジャーとは関係ありません。",
+      faq_q2: "Mayasはどのプラットフォームに対応していますか？",
+      faq_a2: "GitHub ReleasesのAPKによるAndroid、そしてインストール不要でブラウザから直接開けるウェブ版に対応しています。",
+      faq_q3: "Mayasの料金はいくらですか？",
+      faq_a3: "完全無料です。ソースコードはオープンでGitHubに公開されています。",
+      faq_q4: "なぜGoogle PlayではなくAPKなのですか？",
+      faq_a4: "Mayasは若い独立プロジェクトで、まだGoogle Playには公開されていません。APKは直接インストールでき、GitHub Releases経由で更新されます。",
+      faq_q5: "不具合の報告やアイデアの提案はどうすればいいですか？",
+      faq_a5: "プロジェクトのGitHubリポジトリでIssueを作成してください。リンクはサイトのヘッダーにあります。"
     }
   };
 
@@ -561,6 +715,42 @@
   langSelect.addEventListener('change', (e) => {
     applyLanguage(e.target.value);
   });
+
+  // Theme toggle (persisted in localStorage)
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('mayas-theme');
+  if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('mayas-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('mayas-theme', 'light');
+    }
+  });
+
+  // Latest release badge, pulled live from GitHub
+  (async () => {
+    const badgeText = document.getElementById('versionBadgeText');
+    try {
+      const res = await fetch('https://api.github.com/repos/dan1eIDT/Mayas/releases/latest');
+      if (!res.ok) throw new Error('no releases');
+      const data = await res.json();
+      const version = data.tag_name || data.name;
+      const downloads = (data.assets || []).reduce((sum, a) => sum + (a.download_count || 0), 0);
+      badgeText.textContent = downloads > 0
+        ? `${version} · ${downloads.toLocaleString()} ⬇`
+        : `${version}`;
+    } catch (e) {
+      const dict = translations[langSelect.value] || translations.ru;
+      badgeText.textContent = dict.version_error;
+    }
+  })();
 </script>
 
 </body>
