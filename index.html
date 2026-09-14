@@ -37,12 +37,13 @@
             <span>Mayas</span>
         </div>
 
-        <nav>
+        <nav id="siteNav">
             <a href="#features" data-i18n="nav_features">Возможности</a>
             <a href="#screenshots" data-i18n="nav_screenshots">Скриншоты</a>
             <a href="#customization" data-i18n="nav_customization">Кастомизация</a>
             <a href="#download" data-i18n="nav_download">Скачать</a>
             <a href="#faq" data-i18n="nav_faq">FAQ</a>
+            <a href="https://mayas-47778.web.app/" target="_blank" rel="noopener" class="nav-mobile-web" data-i18n="nav_web">Веб-версия</a>
         </nav>
 
         <div class="nav-buttons">
@@ -68,6 +69,11 @@
             <a href="https://github.com/dan1eIDT/Mayas/releases" class="nav-button" data-i18n="nav_download_btn">
                 Скачать
             </a>
+
+            <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+                <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
         </div>
 
     </div>
@@ -107,7 +113,7 @@
                 </a>
 
                 <a href="https://github.com/dan1eIDT" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero_btn_github">
-                    GitHub создателя.
+                    GitHub создателя
                 </a>
 
             </div>
@@ -249,7 +255,7 @@
                 <h2 data-i18n="customization_title">Сделай профиль своим</h2>
 
                 <p data-i18n="customization_desc">
-                    Рамки , переливашки, статусы.
+                    Рамки, переливашки, статусы.
                 </p>
 
                 <ul>
@@ -405,6 +411,32 @@
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  // Mobile nav toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const siteNav = document.getElementById('siteNav');
+
+  function closeMobileNav() {
+    siteNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  siteNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobileNav();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 780) closeMobileNav();
+  });
+
   const translations = {
     ru: {
       meta_title: "Mayas",
@@ -419,7 +451,7 @@
       hero_desc: "Современный мессенджер с чатами, звонками, группами и глубокой кастомизацией профиля.",
       hero_btn_download: "Скачать APK",
       hero_btn_web: "Веб-версия",
-      hero_btn_github: "GitHub создателя.",
+      hero_btn_github: "GitHub создателя",
       features_title: "Возможности",
       feature1_title: "Чаты",
       feature1_desc: "Личные сообщения и групповые беседы.",
