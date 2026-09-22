@@ -55,11 +55,11 @@
 
             <div class="lang-switch">
                 <select id="langSelect" aria-label="Language">
-                    <option value="ru">RU · Русский</option>
-                    <option value="en">EN · English</option>
-                    <option value="es">ES · Español</option>
-                    <option value="de">DE · Deutsch</option>
-                    <option value="ja">JA · 日本語</option>
+                    <option value="ru">RU</option>
+                    <option value="en">EN</option>
+                    <option value="es">ES</option>
+                    <option value="de">DE</option>
+                    <option value="ja">JA</option>
                 </select>
             </div>
 
@@ -67,7 +67,7 @@
                 Веб-версия
             </a>
 
-            <a href="https://github.com/dan1eIDT/Mayas/releases" class="nav-button" data-i18n="nav_download_btn">
+            <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="nav-button" target="_blank" rel="noopener noreferrer" data-i18n="nav_download_btn">
                 Скачать
             </a>
 
@@ -312,9 +312,9 @@
         </div>
         <div class="custom-showcase reveal">
             <div class="custom-controls">
-                <button class="custom-control is-active" type="button" data-custom="glow" data-i18n="custom_control_glow">Свечение</button>
-                <button class="custom-control" type="button" data-custom="frame" data-i18n="custom_control_frame">Рамка</button>
-                <button class="custom-control" type="button" data-custom="status" data-i18n="custom_control_status">Статус</button>
+                <button class="custom-control is-active" type="button" aria-pressed="true" data-custom="glow" data-i18n="custom_control_glow">Свечение</button>
+                <button class="custom-control" type="button" aria-pressed="false" data-custom="frame" data-i18n="custom_control_frame">Рамка</button>
+                <button class="custom-control" type="button" aria-pressed="false" data-custom="status" data-i18n="custom_control_status">Статус</button>
                 <div class="custom-control-note" data-i18n="custom_control_note">Нажми — превью изменится</div>
             </div>
             <div class="custom-preview" id="customPreview">
@@ -439,7 +439,7 @@
             Скачай Mayas и присоединяйся уже сегодня.
         </p>
 
-        <a href="https://github.com/dan1eIDT/Mayas/releases" class="btn-primary big" data-i18n="download_btn">
+        <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary big" data-i18n="download_btn">
             Скачать APK
         </a>
 
@@ -514,6 +514,11 @@
     community: { titleKey: 'feature4_title', descKey: 'feature4_desc', tag: 'COMMUNITY', image: 'assets/screenshot4.png', alt: 'Mayas — сообщества' }
   };
 
+  function getTranslation(lang, key, fallback = '') {
+    const dict = translations[lang] || translations.ru;
+    return dict[key] ?? translations.ru[key] ?? fallback;
+  }
+
   const translations = {
     ru: {
       meta_title: "Mayas",
@@ -585,10 +590,6 @@
       custom_li1: "Свечение профиля",
       custom_li2: "Уникальные рамки",
       custom_li3: "Эмодзи-статусы",
-      stats1_label: "Сообщений",
-      stats2_label: "Чатов",
-      stats3_value: "Не всегда",
-      stats3_label: "Онлайн",
       download_title: "Готов попробовать?",
       download_desc: "Скачай Mayas и присоединяйся уже сегодня.",
       download_btn: "Скачать APK",
@@ -669,10 +670,6 @@
       custom_li1: "Profile glow",
       custom_li2: "Unique frames",
       custom_li3: "Emoji statuses",
-      stats1_label: "Messages",
-      stats2_label: "Chats",
-      stats3_value: "Not always",
-      stats3_label: "Online",
       download_title: "Ready to try it?",
       download_desc: "Download Mayas and join today.",
       download_btn: "Download APK",
@@ -748,10 +745,6 @@
       custom_li1: "Brillo de perfil",
       custom_li2: "Marcos únicos",
       custom_li3: "Estados con emojis",
-      stats1_label: "Mensajes",
-      stats2_label: "Chats",
-      stats3_value: "No siempre",
-      stats3_label: "En línea",
       download_title: "¿Listo para probarlo?",
       download_desc: "Descarga Mayas y únete hoy mismo.",
       download_btn: "Descargar APK",
@@ -827,10 +820,6 @@
       custom_li1: "Profil-Glow",
       custom_li2: "Einzigartige Rahmen",
       custom_li3: "Emoji-Status",
-      stats1_label: "Nachrichten",
-      stats2_label: "Chats",
-      stats3_value: "Nicht immer",
-      stats3_label: "Online",
       download_title: "Bereit, es auszuprobieren?",
       download_desc: "Lade Mayas herunter und mach noch heute mit.",
       download_btn: "APK herunterladen",
@@ -906,10 +895,6 @@
       custom_li1: "プロフィールの発光",
       custom_li2: "ユニークなフレーム",
       custom_li3: "絵文字ステータス",
-      stats1_label: "メッセージ",
-      stats2_label: "チャット",
-      stats3_value: "常時ではない",
-      stats3_label: "オンライン",
       download_title: "試してみますか？",
       download_desc: "Mayasをダウンロードして今すぐ参加しよう。",
       download_btn: "APKをダウンロード",
@@ -930,9 +915,54 @@
     }
   };
 
+  let currentLang = 'ru';
+
+  function applyFeature(name) {
+    const data = featureData[name];
+    if (!data) return;
+
+    const title = document.getElementById('featurePreviewTitle');
+    const desc = document.getElementById('featurePreviewDesc');
+    const tag = document.getElementById('featurePreviewTag');
+    const image = document.getElementById('featurePreviewImage');
+
+    if (title) title.textContent = getTranslation(currentLang, data.titleKey, name);
+    if (desc) desc.textContent = getTranslation(currentLang, data.descKey);
+    if (tag) tag.textContent = data.tag;
+    if (image) {
+      image.src = data.image;
+      image.alt = data.alt;
+    }
+
+    document.querySelectorAll('.feature-tab').forEach(tab => {
+      const active = tab.dataset.feature === name;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('.feature-tab').forEach(tab => {
+    tab.addEventListener('click', () => applyFeature(tab.dataset.feature));
+  });
+
+  document.querySelectorAll('.custom-control').forEach(control => {
+    control.addEventListener('click', () => {
+      const mode = control.dataset.custom;
+      const preview = document.getElementById('customPreview');
+      if (!preview || !mode) return;
+      preview.dataset.mode = mode;
+      document.querySelectorAll('.custom-control').forEach(item => {
+        const active = item === control;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    });
+  });
+
   function applyLanguage(lang) {
     const dict = translations[lang] || translations.ru;
-    document.documentElement.setAttribute('lang', lang);
+    currentLang = translations[lang] ? lang : 'ru';
+    document.documentElement.setAttribute('lang', currentLang);
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -963,30 +993,85 @@
   const initialLang = detectDefaultLang();
   langSelect.value = initialLang;
   applyLanguage(initialLang);
+  applyFeature('chat');
+  const customPreview = document.getElementById('customPreview');
+  if (customPreview) customPreview.dataset.mode = 'glow';
 
   langSelect.addEventListener('change', (e) => {
     applyLanguage(e.target.value);
     const activeFeature = document.querySelector('.feature-tab.is-active');
     if (activeFeature) applyFeature(activeFeature.dataset.feature);
+    loadReleases();
   });
 
   // Theme toggle (persisted in localStorage)
   const themeToggle = document.getElementById('themeToggle');
-  const savedTheme = localStorage.getItem('mayas-theme');
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('mayas-theme'); } catch (_) {}
   if (savedTheme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
   }
 
+  function setTheme(theme) {
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.removeAttribute('data-theme');
+    try { localStorage.setItem('mayas-theme', theme); } catch (_) {}
+    themeToggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+  }
+
+  setTheme(savedTheme === 'light' ? 'light' : 'dark');
   themeToggle.addEventListener('click', () => {
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('mayas-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('mayas-theme', 'light');
-    }
+    setTheme(isLight ? 'dark' : 'light');
   });
+
+  // GitHub releases / changelog
+  const GITHUB_RELEASES_API = 'https://api.github.com/repos/dan1eIDT/Mayas/releases?per_page=3';
+  const GITHUB_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases';
+  const releaseList = document.getElementById('releaseList');
+
+  function escapeText(value) {
+    const div = document.createElement('div');
+    div.textContent = value == null ? '' : String(value);
+    return div.innerHTML;
+  }
+
+  function formatReleaseDate(value) {
+    try {
+      return new Intl.DateTimeFormat(currentLang, { year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(value));
+    } catch (_) {
+      return '';
+    }
+  }
+
+  async function loadReleases() {
+    if (!releaseList) return;
+    try {
+      const res = await fetch(GITHUB_RELEASES_API, { headers: { Accept: 'application/vnd.github+json' } });
+      if (!res.ok) throw new Error('GitHub API error');
+      const releases = await res.json();
+      if (!Array.isArray(releases) || releases.length === 0) throw new Error('No releases');
+
+      const dict = translations[currentLang] || translations.ru;
+      releaseList.innerHTML = releases.slice(0, 3).map((release, index) => {
+        const tag = escapeText(release.tag_name || release.name || dict.changelog_release);
+        const title = escapeText(release.name || release.tag_name || dict.changelog_release);
+        const notes = String(release.body || '').replace(/\r?\n/g, ' ').replace(/\s+/g, ' ').trim();
+        const shortNotes = escapeText(notes ? (notes.length > 180 ? notes.slice(0, 177) + '…' : notes) : dict.changelog_no_notes);
+        const date = formatReleaseDate(release.published_at || release.created_at);
+        return `<article class="release-card${index === 0 ? ' is-latest' : ''}">
+          <div class="release-top"><span class="release-tag">${tag}</span><time datetime="${escapeText(release.published_at || release.created_at || '')}">${escapeText(date)}</time></div>
+          <h3>${title}</h3><p>${shortNotes}</p>
+          <a href="${escapeText(release.html_url || GITHUB_RELEASES_URL)}" target="_blank" rel="noopener noreferrer">${escapeText(dict.changelog_release)} →</a>
+        </article>`;
+      }).join('');
+    } catch (_) {
+      const dict = translations[currentLang] || translations.ru;
+      releaseList.innerHTML = `<div class="release-error">${escapeText(dict.changelog_error)} <a href="${GITHUB_RELEASES_URL}" target="_blank" rel="noopener noreferrer">${escapeText(dict.changelog_all)} →</a></div>`;
+    }
+  }
+
+  loadReleases();
 
   // Latest release badge, pulled live from GitHub — shown only if the fetch actually succeeds
   (async () => {
