@@ -193,12 +193,13 @@
   </div>
 </div>
 
+<script src="../assets/apk.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
   const card = document.getElementById('card');
 
-  const APK_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases';
+  const APK_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases/latest';
   const DEEP_LINK_SCHEME = code ? `mayas://join/${encodeURIComponent(code)}` : null;
 
   if (!code) {
@@ -217,7 +218,7 @@
       <p class="sub">Нажмите «Открыть в приложении». Если Mayas установлен, вы сразу перейдёте в нужный чат.</p>
       
       <a class="btn btn-primary" id="openAppBtn" href="${DEEP_LINK_SCHEME}">Открыть в приложении</a>
-      <a class="btn btn-ghost" href="${APK_RELEASES_URL}">Скачать Mayas (APK)</a>
+      <a class="btn btn-ghost" id="apkBtn" href="${APK_RELEASES_URL}">Скачать Mayas (APK)</a>
       
       <div class="status" id="status"></div>
     `;
@@ -242,6 +243,11 @@
       e.preventDefault();
       tryOpenApp();
     });
+
+    MayasReleases.load().then(function (data) {
+      const apk = MayasReleases.pickApk(MayasReleases.latestStable(data));
+      if (apk) document.getElementById('apkBtn').setAttribute('href', apk.browser_download_url);
+    }).catch(function () {});
   }
 
   function escapeHtml(str) {
