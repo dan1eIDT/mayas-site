@@ -1,259 +1,338 @@
+<!-- Copyright (C) 2026 dan1eIDT -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mayas — Присоединиться</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Приглашение в Mayas</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Вас пригласили в Mayas. Откройте приглашение в приложении или в веб-версии.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mayas">
+<meta property="og:title" content="Приглашение в Mayas">
+<meta property="og:description" content="Вас пригласили в Mayas. Откройте приглашение в приложении или в веб-версии.">
+<meta property="og:image" content="https://dan1eidt.github.io/mayas-site/assets/app_icon.png">
 <link rel="icon" type="image/png" href="../assets/app_icon.png">
 <link rel="apple-touch-icon" href="../assets/app_icon.png">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#1a1a1e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#000000;
-    --panel:#050409;
+    --bg:#0b0b0e;
+    --bar:#1a1a1e;
+    --card:#1c1c20;
     --violet:#8B5CF6;
     --violet-bright:#B39DFF;
-    --violet-deep:#4C2889;
-    --violet-glow:rgba(139,92,246,0.35);
+    --gradient:linear-gradient(135deg,#8B5CF6 0%,#4F7CFF 100%);
     --line:rgba(179,157,255,0.14);
-    --line-strong:rgba(179,157,255,0.30);
+    --line-strong:rgba(179,157,255,0.34);
     --text:#F5F3FA;
-    --muted:#8D84A8;
-    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --muted:#8E8E99;
+    --safe-top:env(safe-area-inset-top,0px);
+    --safe-bottom:env(safe-area-inset-bottom,0px);
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{height:100%;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  [hidden]{display:none !important;}
+  html{min-height:100%;-webkit-text-size-adjust:100%;}
   body{
-    background:var(--bg);
+    min-height:100vh;
+    min-height:100dvh;
+    background:var(--bg) url(../assets/join-pattern.svg) center top/360px 360px repeat;
     color:var(--text);
-    font-family:'Inter', sans-serif;
-    overflow:hidden;
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    display:flex;
+    flex-direction:column;
   }
-  a{ color:inherit; text-decoration:none; }
-  h1,.display{ font-family:'Bricolage Grotesque', sans-serif; }
-
-  .screen{
-    display:grid;
-    grid-template-columns:1.35fr 1fr;
-    height:100vh;
-    width:100%;
-  }
-
-  /* LEFT — giant logo/icon panel */
-  .stage{
-    position:relative;
-    background:var(--panel);
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-    border-right:1px solid var(--line);
-  }
-  .stage::before{
+  body::before{
     content:"";
-    position:absolute; inset:-20%;
-    background:
-      radial-gradient(circle at 32% 38%, var(--violet-glow), transparent 55%),
-      radial-gradient(circle at 75% 70%, rgba(76,40,137,0.30), transparent 50%);
-    animation:swell 10s ease-in-out infinite alternate;
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(60% 50% at 50% 38%,rgba(139,92,246,0.16),transparent 72%);
   }
-  @keyframes swell{ to{ transform:scale(1.12) translate(2%,-2%); } }
-  .stage::after{
-    content:"";
-    position:absolute; inset:0;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:64px 64px;
-    opacity:.35;
-    -webkit-mask-image:radial-gradient(circle at 50% 50%, black 0%, transparent 70%);
-            mask-image:radial-gradient(circle at 50% 50%, black 0%, transparent 70%);
-  }
+  a{color:inherit;text-decoration:none;}
 
-  /* Большой силуэт :( сзади */
-  .stage-code{
-    position:absolute; z-index:0;
-    font-family:'Bricolage Grotesque', sans-serif;
-    font-weight:800;
-    font-size:min(35vw, 480px);
-    line-height:1;
-    letter-spacing:-0.06em;
-    color:transparent;
-    -webkit-text-stroke:1px var(--line-strong);
-    user-select:none;
-    white-space:nowrap;
+  .topbar{
+    position:sticky;top:0;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;
+    height:calc(72px + var(--safe-top));
+    padding:var(--safe-top) 22px 0;
+    background:rgba(26,26,30,0.96);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   }
+  .brand{display:flex;align-items:center;gap:12px;font-size:26px;font-weight:600;letter-spacing:-0.01em;}
+  .brand img{width:42px;height:42px;border-radius:12px;display:block;}
 
-  /* Светильник со смайликом по центру */
-  .glyph{
-    position:relative; z-index:1;
-    width:min(40vw, 320px); height:min(40vw, 320px);
-    border-radius:28%;
-    display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(135deg, #180b38, #000000);
-    box-shadow:
-      0 0 0 1px var(--line-strong),
-      0 60px 140px -40px var(--violet-glow),
-      0 0 180px -30px var(--violet-glow);
-    animation:breathe 5s ease-in-out infinite;
-    font-family:'Bricolage Grotesque', sans-serif;
-    font-size:100px;
-    font-weight:800;
-    color:var(--text);
-    text-shadow: 0 0 30px var(--violet-bright);
-    letter-spacing: -0.05em;
+  .pill{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:42px;padding:0 22px;border-radius:999px;
+    background:var(--gradient);color:#07070a;
+    font-size:15px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;
+    transition:transform .15s ease,box-shadow .2s ease;
   }
-  @keyframes breathe{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.035); } }
+  .pill:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,92,246,0.4);}
 
-  /* RIGHT — content panel */
-  .panel{
-    display:flex; align-items:center; justify-content:center;
-    padding:48px;
-    position:relative;
+  main{
+    position:relative;z-index:1;flex:1;
+    display:flex;align-items:flex-start;justify-content:center;
+    padding:40px 16px calc(64px + var(--safe-bottom));
   }
-  .panel-inner{ width:100%; max-width:380px; }
-
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--violet-bright);
-    border:1px solid var(--line-strong); border-radius:999px;
-    padding:5px 13px; margin-bottom:26px;
-    word-break: break-all;
-  }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--violet-bright); flex-shrink:0; }
-
-  .panel h1{
-    font-size:clamp(28px,4vw,36px); font-weight:800;
-    letter-spacing:-0.02em; line-height:1.1;
-    margin-bottom:16px;
-  }
-  .panel p.sub{
-    color:var(--muted); font-size:15px; line-height:1.6;
-    margin-bottom:34px;
-  }
-
-  .btn{
-    display:flex; align-items:center; justify-content:center; gap:8px;
-    width:100%;
-    padding:14px 20px; border-radius:999px;
-    font-size:15px; font-weight:600;
-    border:1px solid var(--line-strong);
-    transition:all .25s var(--ease);
-    margin-bottom:12px;
-    cursor:pointer;
-  }
-  .btn-primary{ background:var(--text); color:#000; border-color:var(--text); }
-  .btn-primary:hover{ background:var(--violet-bright); border-color:var(--violet-bright); transform:translateY(-2px); box-shadow:0 10px 28px -10px var(--violet-glow); }
-  .btn-ghost{ color:var(--text); background:rgba(255,255,255,0.02); }
-  .btn-ghost:hover{ border-color:var(--violet-bright); color:var(--violet-bright); transform:translateY(-2px); }
-
-  .status {
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    color:var(--violet-bright);
+  .card{
+    width:100%;max-width:500px;
+    background:var(--card);
+    border-radius:22px;
+    padding:38px 30px 30px;
     text-align:center;
-    margin-top:16px;
-    min-height:18px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55),0 0 0 1px rgba(179,157,255,0.08);
   }
 
-  .panel-logo{
-    display:none;
-    width:42px; height:42px; border-radius:12px;
-    background:#000; box-shadow:0 0 0 1px var(--line-strong);
-    margin-bottom:24px;
-    align-items:center; justify-content:center;
-    font-family:'Bricolage Grotesque', sans-serif;
-    font-size:20px; font-weight:800; color:var(--text);
+  .avatar{
+    width:120px;height:120px;margin:0 auto 24px;border-radius:50%;
+    overflow:hidden;background:#05050a;
+    border:2px solid var(--violet);
+    box-shadow:0 0 40px rgba(139,92,246,0.35);
+    display:flex;align-items:center;justify-content:center;
   }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+  .avatar.is-glyph{font-size:44px;font-weight:700;color:var(--violet-bright);}
 
-  /* mobile */
-  @media(max-width:860px){
-    .screen{ grid-template-columns:1fr; grid-template-rows:auto 1fr; height:auto; min-height:100vh; }
-    body{ overflow-y:auto; }
-    .stage{ height:32vh; min-height:220px; border-right:none; border-bottom:1px solid var(--line); }
-    .glyph{ width:110px; height:110px; font-size:44px; }
-    .panel{ padding:40px 24px 56px; }
-    .panel-logo{ display:flex; }
+  .title{font-size:30px;font-weight:700;line-height:1.2;letter-spacing:-0.01em;word-break:break-word;}
+  .subtitle{margin-top:8px;font-size:17px;color:var(--muted);}
+  .desc{margin-top:18px;font-size:18px;line-height:1.55;color:#EFEDF5;word-break:break-word;}
+
+  .actions{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:52px;min-width:220px;padding:0 34px;border-radius:999px;border:0;cursor:pointer;
+    font-family:inherit;font-size:16px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;
+    transition:transform .15s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
+  }
+  .btn-primary{background:var(--gradient);color:#07070a;box-shadow:0 10px 30px rgba(79,124,255,0.25);}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(139,92,246,0.45);}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--line-strong);}
+  .btn-outline:hover{background:rgba(139,92,246,0.14);border-color:var(--violet-bright);}
+  .btn:active{transform:scale(0.98);}
+  .btn:focus-visible,.pill:focus-visible,.ghost:focus-visible{outline:2px solid var(--violet-bright);outline-offset:3px;}
+
+  .status{min-height:20px;font-size:14px;line-height:1.4;color:var(--violet-bright);}
+  .status:empty{display:none;}
+  .ghost{display:inline-block;margin-top:20px;font-size:17px;color:var(--muted);transition:color .2s ease;}
+  .ghost:hover{color:var(--text);}
+  .ghost .size{font-size:13px;margin-left:6px;opacity:0.8;}
+  .note{margin-top:16px;font-size:13px;line-height:1.5;color:var(--muted);}
+
+  @media (max-width:560px){
+    .topbar{height:calc(60px + var(--safe-top));padding-left:16px;padding-right:16px;}
+    .brand{font-size:21px;gap:10px;}
+    .brand img{width:34px;height:34px;border-radius:10px;}
+    .pill{height:38px;padding:0 16px;font-size:13px;}
+    main{padding-top:24px;}
+    .card{padding:30px 20px 24px;border-radius:20px;}
+    .avatar{width:104px;height:104px;margin-bottom:20px;}
+    .title{font-size:26px;}
+    .subtitle{font-size:16px;}
+    .desc{font-size:17px;}
+    .actions{margin-top:26px;}
+    .btn{width:100%;max-width:340px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .btn,.pill,.ghost{transition:none;}
   }
 </style>
 </head>
 <body>
 
-<div class="screen">
-  <div class="stage">
-    <div class="stage-code">:(</div>
-    <div class="glyph">:(</div>
-  </div>
+<header class="topbar">
+  <a class="brand" href="../">
+    <img src="../assets/app_icon.png" alt="">
+    <span>Mayas</span>
+  </a>
+  <a class="pill" id="topDownload" data-apk href="https://github.com/dan1eIDT/Mayas/releases/latest">Скачать</a>
+</header>
 
-  <div class="panel">
-    <div class="panel-inner" id="card">
-      <!-- Контент подставится JS-скриптом -->
-    </div>
-  </div>
-</div>
+<main>
+  <section class="card" id="card"></section>
+</main>
 
 <script src="../assets/apk.js"></script>
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-  const card = document.getElementById('card');
-
+  const WEB_URL = 'https://mayas-47778.web.app/';
   const APK_RELEASES_URL = 'https://github.com/dan1eIDT/Mayas/releases/latest';
-  const DEEP_LINK_SCHEME = code ? `mayas://join/${encodeURIComponent(code)}` : null;
+  const ICON_URL = '../assets/app_icon.png';
+  const CODE_RE = /^[A-Za-z0-9_-]{2,64}$/;
+  const INVITE_SOURCE = null;
+  const APP_OPEN_TIMEOUT = 1600;
 
-  if (!code) {
-    card.innerHTML = `
-      <div class="panel-logo">:(</div>
-      <div class="eyebrow"><span class="dot"></span> ОШИБКА ССЫЛКИ</div>
-      <h1>Ссылка недействительна</h1>
-      <p class="sub">В URL не найден код приглашения. Проверьте, что вы скопировали ссылку полностью.</p>
-      <a class="btn btn-ghost" href="${APK_RELEASES_URL}">Страница Mayas на GitHub</a>
-    `;
-  } else {
-    card.innerHTML = `
-      <div class="panel-logo">:(</div>
-      <div class="eyebrow"><span class="dot"></span> КОД: ${escapeHtml(code)}</div>
-      <h1>Приглашение в Mayas</h1>
-      <p class="sub">Нажмите «Открыть в приложении». Если Mayas установлен, вы сразу перейдёте в нужный чат.</p>
-      
-      <a class="btn btn-primary" id="openAppBtn" href="${DEEP_LINK_SCHEME}">Открыть в приложении</a>
-      <a class="btn btn-ghost" id="apkBtn" href="${APK_RELEASES_URL}">Скачать Mayas (APK)</a>
-      
-      <div class="status" id="status"></div>
-    `;
+  const params = new URLSearchParams(window.location.search);
+  const rawCode = params.get('code');
+  const code = rawCode && CODE_RE.test(rawCode) ? rawCode : null;
+  const card = document.getElementById('card');
+  const topDownload = document.getElementById('topDownload');
 
-    const statusEl = document.getElementById('status');
-    let triedAutoOpen = false;
-
-    function tryOpenApp() {
-      if (triedAutoOpen) return;
-      triedAutoOpen = true;
-      statusEl.textContent = 'Открываем приложение…';
-      window.location.href = DEEP_LINK_SCHEME;
-
-      setTimeout(() => {
-        if (document.visibilityState === 'visible') {
-          statusEl.textContent = 'Не открылось? Скачайте APK по кнопке выше.';
-        }
-      }, 1500);
-    }
-
-    document.getElementById('openAppBtn').addEventListener('click', function (e) {
-      e.preventDefault();
-      tryOpenApp();
-    });
-
-    MayasReleases.load().then(function (data) {
-      const apk = MayasReleases.pickApk(MayasReleases.latestStable(data));
-      if (apk) document.getElementById('apkBtn').setAttribute('href', apk.browser_download_url);
-    }).catch(function () {});
-  }
+  const ua = navigator.userAgent;
+  const isAndroid = /Android/i.test(ua);
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
   function escapeHtml(str) {
     const div = document.createElement('div');
-    div.textContent = str;
+    div.textContent = str == null ? '' : String(str);
     return div.innerHTML;
+  }
+
+  function safeImageUrl(url) {
+    try {
+      const u = new URL(url, window.location.href);
+      return u.protocol === 'https:' ? u.href : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function plural(n, one, few, many) {
+    const m10 = n % 10;
+    const m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+
+  function loadInvite(c) {
+    if (!INVITE_SOURCE) return Promise.resolve(null);
+    return fetch(INVITE_SOURCE.url(c), { headers: { Accept: 'application/json' } })
+      .then((res) => {
+        if (!res.ok) throw new Error('invite ' + res.status);
+        return res.json();
+      })
+      .then((json) => INVITE_SOURCE.map(json));
+  }
+
+  function bindAvatarFallback() {
+    const img = card.querySelector('.avatar img');
+    if (img) img.addEventListener('error', () => { img.src = ICON_URL; }, { once: true });
+  }
+
+  function linkApk() {
+    if (!document.querySelector('[data-apk]')) return;
+    MayasReleases.load().then((data) => {
+      const release = MayasReleases.latestStable(data);
+      MayasReleases.applyDownloadLinks(release);
+      const apk = MayasReleases.pickApk(release);
+      const size = document.getElementById('apkSize');
+      if (apk && size) size.textContent = (apk.size / 1048576).toFixed(1) + ' MB';
+    }).catch(() => {});
+  }
+
+  function showError() {
+    document.title = 'Ссылка недействительна — Mayas';
+    card.innerHTML = `
+      <div class="avatar is-glyph">:(</div>
+      <h1 class="title">Ссылка недействительна</h1>
+      <p class="desc">В ссылке нет корректного кода приглашения. Проверьте, что вы скопировали её полностью.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="${WEB_URL}">Открыть в вебе</a>
+      </div>
+      <a class="ghost" href="../">На сайт Mayas</a>
+    `;
+    if (isIOS) topDownload.hidden = true;
+    linkApk();
+  }
+
+  function render(invite) {
+    const title = invite && invite.title ? invite.title : 'Приглашение в Mayas';
+    const parts = [];
+    if (invite && invite.kind) parts.push(invite.kind);
+    if (invite && Number.isFinite(invite.members)) {
+      parts.push(invite.members + ' ' + plural(invite.members, 'участник', 'участника', 'участников'));
+    }
+    const subtitle = parts.length ? parts.join(' · ') : 'Код приглашения: ' + code;
+
+    let desc;
+    if (invite && invite.description) desc = invite.description;
+    else if (isAndroid) desc = 'Вас пригласили в Mayas. Откройте приглашение в приложении, чтобы присоединиться.';
+    else if (isIOS) desc = 'Вас пригласили в Mayas. Присоединиться можно в веб-версии.';
+    else desc = 'Вас пригласили в Mayas. Откройте приглашение в веб-версии или установите приложение для Android.';
+
+    const webHref = WEB_URL + '?join=' + encodeURIComponent(code);
+    const appHref = 'mayas://join/' + encodeURIComponent(code);
+
+    let actions;
+    if (isAndroid) {
+      actions = `
+        <a class="btn btn-primary" id="openAppBtn" href="${appHref}">Открыть в Mayas</a>
+        <a class="btn btn-outline" id="webBtn" href="${webHref}" hidden>Открыть в вебе</a>
+        <p class="status" id="status" role="status" aria-live="polite"></p>`;
+    } else {
+      actions = `<a class="btn btn-primary" id="webBtn" href="${webHref}">Открыть в вебе</a>`;
+    }
+
+    let tail = '';
+    if (isIOS) {
+      tail = '<p class="note">Приложения Mayas для iOS пока нет, поэтому доступна только веб-версия.</p>';
+    } else {
+      tail = `<a class="ghost" data-apk href="${APK_RELEASES_URL}">${isAndroid ? 'Скачать Mayas' : 'Скачать Mayas для Android'}<span class="size" id="apkSize"></span></a>`;
+    }
+
+    document.title = title + ' — Mayas';
+    card.innerHTML = `
+      <div class="avatar"><img src="${escapeHtml((invite && invite.avatar && safeImageUrl(invite.avatar)) || ICON_URL)}" alt=""></div>
+      <h1 class="title">${escapeHtml(title)}</h1>
+      <div class="subtitle">${escapeHtml(subtitle)}</div>
+      <p class="desc">${escapeHtml(desc)}</p>
+      <div class="actions">${actions}</div>
+      ${tail}
+    `;
+    bindAvatarFallback();
+    if (isIOS) topDownload.hidden = true;
+
+    const openBtn = document.getElementById('openAppBtn');
+    if (openBtn) setupAppOpen(openBtn, appHref);
+    linkApk();
+  }
+
+  function setupAppOpen(openBtn, appHref) {
+    const statusEl = document.getElementById('status');
+    const webBtn = document.getElementById('webBtn');
+    let attempting = false;
+
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (attempting) return;
+      attempting = true;
+      let left = false;
+      const mark = () => { left = true; };
+      document.addEventListener('visibilitychange', mark, { once: true });
+      window.addEventListener('pagehide', mark, { once: true });
+      window.addEventListener('blur', mark, { once: true });
+      statusEl.textContent = 'Открываем приложение…';
+      window.location.href = appHref;
+      setTimeout(() => {
+        attempting = false;
+        document.removeEventListener('visibilitychange', mark);
+        window.removeEventListener('pagehide', mark);
+        window.removeEventListener('blur', mark);
+        if (left || document.visibilityState !== 'visible') {
+          statusEl.textContent = '';
+          return;
+        }
+        statusEl.textContent = 'Приложение не найдено на этом устройстве. Откройте приглашение в вебе или установите Mayas.';
+        webBtn.hidden = false;
+      }, APP_OPEN_TIMEOUT);
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && !attempting && statusEl.textContent === 'Открываем приложение…') {
+        statusEl.textContent = '';
+      }
+    });
+  }
+
+  if (!code) {
+    showError();
+  } else {
+    render(null);
+    if (INVITE_SOURCE) {
+      loadInvite(code).then((invite) => { if (invite) render(invite); }).catch(() => {});
+    }
   }
 </script>
 
