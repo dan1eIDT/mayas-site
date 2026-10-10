@@ -6,9 +6,9 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dan1eidt.github.io/mayas-site/join/</loc>
+    <loc>https://dan1eidt.github.io/mayas-site/install/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dan1eidt.github.io/mayas-site/tos.html</loc>

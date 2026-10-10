@@ -431,19 +431,31 @@
 
 <section id="download" class="download">
 
-    <div class="container">
+    <div class="container download-layout" id="downloadLayout">
 
-        <h2 data-i18n="download_title">Готов попробовать?</h2>
+        <div class="download-copy">
 
-        <p data-i18n="download_desc">
-            Скачай Mayas и присоединяйся уже сегодня.
-        </p>
+            <h2 data-i18n="download_title">Готов попробовать?</h2>
 
-        <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary big" data-apk data-i18n="download_btn">
-            Скачать APK
-        </a>
+            <p data-i18n="download_desc">
+                Скачай Mayas и присоединяйся уже сегодня.
+            </p>
 
-        <p class="apk-meta" data-apk-meta hidden></p>
+            <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary big" data-apk data-i18n="download_btn">
+                Скачать APK
+            </a>
+
+            <p class="apk-meta" data-apk-meta hidden></p>
+
+            <a href="install/" class="download-install" data-install-link data-i18n="download_install">Как установить</a>
+
+        </div>
+
+        <div class="download-qr" id="downloadQr" hidden>
+            <div class="qr-box" id="qrBox"></div>
+            <strong data-i18n="qr_title">Скачать на телефон</strong>
+            <span data-i18n="qr_hint">Наведи камеру телефона на QR-код — откроется страница установки.</span>
+        </div>
 
     </div>
 
@@ -456,6 +468,7 @@
         <span>Project IDT 2026</span>
 
         <div>
+            <a href="install/" data-install-link data-i18n="download_install">How to install</a>
             <a href="tos.html" data-i18n="footer_terms">Terms</a>
             <a href="https://github.com/dan1eIDT" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -468,6 +481,8 @@
     <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary" data-apk data-i18n="download_btn">Скачать APK</a>
 </div>
 
+<script src="assets/vendor/qrcode.min.js"></script>
+<script src="assets/qr.js"></script>
 <script src="assets/apk.js"></script>
 <script>
   const io = new IntersectionObserver((entries) => {
@@ -517,6 +532,15 @@
 
   // Subtle header state while scrolling
   const navbar = document.querySelector('.navbar');
+  const downloadQr = document.getElementById('downloadQr');
+  if (downloadQr && !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    try {
+      MayasQR.render(document.getElementById('qrBox'), new URL('install/', window.location.href).href, { logo: 'assets/app_icon.png', label: 'QR' });
+      downloadQr.hidden = false;
+      document.getElementById('downloadLayout').classList.add('has-qr');
+    } catch (_) {}
+  }
+
   let navCompact = false;
   const updateNavbar = () => {
     const y = window.scrollY;
@@ -627,6 +651,9 @@
       download_title: "Готов попробовать?",
       download_desc: "Скачай Mayas и присоединяйся уже сегодня.",
       download_btn: "Скачать APK",
+      download_install: "Как установить",
+      qr_title: "Скачать на телефон",
+      qr_hint: "Наведи камеру телефона на QR-код — откроется страница установки.",
       footer_terms: "Условия",
       nav_faq: "FAQ",
       faq_title: "Частые вопросы",
@@ -722,6 +749,9 @@
       download_title: "Ready to try it?",
       download_desc: "Download Mayas and join today.",
       download_btn: "Download APK",
+      download_install: "How to install",
+      qr_title: "Get it on your phone",
+      qr_hint: "Point your phone’s camera at the QR code to open the install page.",
       footer_terms: "Terms",
       nav_faq: "FAQ",
       faq_title: "Frequently asked questions",
@@ -812,6 +842,9 @@
       download_title: "¿Listo para probarlo?",
       download_desc: "Descarga Mayas y únete hoy mismo.",
       download_btn: "Descargar APK",
+      download_install: "Cómo instalar",
+      qr_title: "Descárgala en tu móvil",
+      qr_hint: "Apunta la cámara del móvil al código QR para abrir la página de instalación.",
       footer_terms: "Términos",
       nav_faq: "FAQ",
       faq_title: "Preguntas frecuentes",
@@ -902,6 +935,9 @@
       download_title: "Bereit, es auszuprobieren?",
       download_desc: "Lade Mayas herunter und mach noch heute mit.",
       download_btn: "APK herunterladen",
+      download_install: "So installierst du es",
+      qr_title: "Aufs Handy laden",
+      qr_hint: "Richte die Handykamera auf den QR-Code, um die Installationsseite zu öffnen.",
       footer_terms: "Nutzungsbedingungen",
       nav_faq: "FAQ",
       faq_title: "Häufig gestellte Fragen",
@@ -992,6 +1028,9 @@
       download_title: "試してみますか？",
       download_desc: "Mayasをダウンロードして今すぐ参加しよう。",
       download_btn: "APKをダウンロード",
+      download_install: "インストール方法",
+      qr_title: "スマホで入手",
+      qr_hint: "スマホのカメラでQRコードを読み取ると、インストールページが開きます。",
       footer_terms: "利用規約",
       nav_faq: "FAQ",
       faq_title: "よくある質問",
@@ -1058,6 +1097,7 @@
     const dict = translations[lang] || translations.ru;
     currentLang = translations[lang] ? lang : 'ru';
     document.documentElement.setAttribute('lang', currentLang);
+    document.querySelectorAll('[data-install-link]').forEach(a => a.setAttribute('href', 'install/?lang=' + currentLang));
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');

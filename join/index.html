@@ -121,6 +121,8 @@
   .status{min-height:20px;font-size:14px;line-height:1.4;color:var(--violet-bright);}
   .status:empty{display:none;}
   .ghost{display:inline-block;margin-top:20px;font-size:17px;color:var(--muted);transition:color .2s ease;}
+  .ghosts{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 26px;margin-top:20px;}
+  .ghosts .ghost{margin-top:0;}
   .ghost:hover{color:var(--text);}
   .ghost .size{font-size:13px;margin-left:6px;opacity:0.8;}
   .note{margin-top:16px;font-size:13px;line-height:1.5;color:var(--muted);}
@@ -335,7 +337,7 @@
     if (platform === 'ios') {
       tail = '<p class="note">Приложения Mayas для iOS пока нет, поэтому доступна только веб-версия.</p>';
     } else {
-      tail = `<a class="ghost" data-apk href="${APK_RELEASES_URL}">${platform === 'android' ? 'Скачать Mayas' : 'Скачать Mayas для Android'}<span class="size" id="apkSize"></span></a>`;
+      tail = `<div class="ghosts"><a class="ghost" data-apk href="${APK_RELEASES_URL}">${platform === 'android' ? 'Скачать Mayas' : 'Скачать Mayas для Android'}<span class="size" id="apkSize"></span></a><a class="ghost" href="../install/">Как установить</a></div>`;
     }
 
     document.title = 'Приглашение в Mayas';
