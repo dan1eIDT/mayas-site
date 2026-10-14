@@ -11,6 +11,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+<script>
+(() => {
+  const REDIRECT_ENABLED = true;
+
+  const OLD_HOST = "dan1eidt.github.io";
+  const OLD_PATH = "/mayas-site";
+  const NEW_ORIGIN = "https://mayasapp.ru";
+
+  if (!REDIRECT_ENABLED) return;
+
+  if (window.location.hostname !== OLD_HOST) return;
+
+  const currentPath = window.location.pathname;
+
+  if (
+    currentPath !== OLD_PATH &&
+    !currentPath.startsWith(OLD_PATH + "/")
+  ) {
+    return;
+  }
+
+  const newPath = currentPath.slice(OLD_PATH.length) || "/";
+  const destination =
+    NEW_ORIGIN +
+    newPath +
+    window.location.search +
+    window.location.hash;
+
+  window.location.replace(destination);
+})();
+</script>
   :root{
     --bg:#000000;
     --panel:#050409;
