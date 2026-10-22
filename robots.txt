@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dan1eidt.github.io/mayas-site/sitemap.xml
+Sitemap: https://mayasapp.ru/sitemap.xml
