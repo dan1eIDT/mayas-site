@@ -11,141 +11,16 @@
 <meta property="og:site_name" content="Mayas">
 <meta property="og:title" content="Приглашение в Mayas">
 <meta property="og:description" content="Вас пригласили в Mayas. Откройте приглашение в приложении или в веб-версии.">
-<meta property="og:image" content="https://dan1eidt.github.io/mayas-site/assets/app_icon.png">
+<meta property="og:image" content="https://mayasapp.ru/assets/app_icon.png">
 <link rel="icon" type="image/png" href="../assets/app_icon.png">
 <link rel="apple-touch-icon" href="../assets/app_icon.png">
 <meta name="theme-color" content="#1a1a1e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0b0b0e;
-    --bar:#1a1a1e;
-    --card:#1c1c20;
-    --violet:#8B5CF6;
-    --violet-bright:#B39DFF;
-    --gradient:linear-gradient(135deg,#8B5CF6 0%,#4F7CFF 100%);
-    --line:rgba(179,157,255,0.14);
-    --line-strong:rgba(179,157,255,0.34);
-    --text:#F5F3FA;
-    --muted:#8E8E99;
-    --safe-top:env(safe-area-inset-top,0px);
-    --safe-bottom:env(safe-area-inset-bottom,0px);
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  [hidden]{display:none !important;}
-  html{min-height:100%;-webkit-text-size-adjust:100%;}
-  body{
-    min-height:100vh;
-    min-height:100dvh;
-    background:var(--bg) url(../assets/join-pattern.svg) center top/360px 360px repeat;
-    color:var(--text);
-    font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-    display:flex;
-    flex-direction:column;
-  }
-  body::before{
-    content:"";
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(60% 50% at 50% 38%,rgba(139,92,246,0.16),transparent 72%);
-  }
-  a{color:inherit;text-decoration:none;}
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Golos+Text:wght@400;500;600&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
 
-  .topbar{
-    position:sticky;top:0;z-index:5;
-    display:flex;align-items:center;justify-content:space-between;
-    height:calc(72px + var(--safe-top));
-    padding:var(--safe-top) 22px 0;
-    background:rgba(26,26,30,0.96);
-    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  }
-  .brand{display:flex;align-items:center;gap:12px;font-size:26px;font-weight:600;letter-spacing:-0.01em;}
-  .brand img{width:42px;height:42px;border-radius:12px;display:block;}
-
-  .pill{
-    display:inline-flex;align-items:center;justify-content:center;
-    height:42px;padding:0 22px;border-radius:999px;
-    background:var(--gradient);color:#07070a;
-    font-size:15px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;
-    transition:transform .15s ease,box-shadow .2s ease;
-  }
-  .pill:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,92,246,0.4);}
-
-  main{
-    position:relative;z-index:1;flex:1;
-    display:flex;align-items:flex-start;justify-content:center;
-    padding:40px 16px calc(64px + var(--safe-bottom));
-  }
-  .card{
-    width:100%;max-width:500px;
-    background:var(--card);
-    border-radius:22px;
-    padding:38px 30px 30px;
-    text-align:center;
-    box-shadow:0 30px 80px rgba(0,0,0,0.55),0 0 0 1px rgba(179,157,255,0.08);
-  }
-
-  .avatar{
-    width:120px;height:120px;margin:0 auto 24px;border-radius:50%;
-    overflow:hidden;background:#05050a;
-    border:2px solid var(--violet);
-    box-shadow:0 0 40px rgba(139,92,246,0.35);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-  .avatar.is-glyph{font-size:44px;font-weight:700;color:var(--violet-bright);}
-
-  .title{font-size:30px;font-weight:700;line-height:1.2;letter-spacing:-0.01em;word-break:break-word;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;}
-  .title .verified{width:24px;height:24px;flex:none;}
-  .fade-in{animation:fadeIn .35s ease both;}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
-  .subtitle{margin-top:8px;font-size:17px;color:var(--muted);}
-  .desc{margin-top:18px;font-size:18px;line-height:1.55;color:#EFEDF5;word-break:break-word;}
-
-  .actions{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:12px;}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;
-    min-height:52px;min-width:220px;padding:0 34px;border-radius:999px;border:0;cursor:pointer;
-    font-family:inherit;font-size:16px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;
-    transition:transform .15s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
-  }
-  .btn-primary{background:var(--gradient);color:#07070a;box-shadow:0 10px 30px rgba(79,124,255,0.25);}
-  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(139,92,246,0.45);}
-  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--line-strong);}
-  .btn-outline:hover{background:rgba(139,92,246,0.14);border-color:var(--violet-bright);}
-  .btn-outline.attention{border-color:var(--violet-bright);box-shadow:0 0 0 4px rgba(139,92,246,0.25);}
-  .btn:active{transform:scale(0.98);}
-  .btn:focus-visible,.pill:focus-visible,.ghost:focus-visible{outline:2px solid var(--violet-bright);outline-offset:3px;}
-
-  .status{min-height:20px;font-size:14px;line-height:1.4;color:var(--violet-bright);}
-  .status:empty{display:none;}
-  .ghost{display:inline-block;margin-top:20px;font-size:17px;color:var(--muted);transition:color .2s ease;}
-  .ghosts{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 26px;margin-top:20px;}
-  .ghosts .ghost{margin-top:0;}
-  .ghost:hover{color:var(--text);}
-  .ghost .size{font-size:13px;margin-left:6px;opacity:0.8;}
-  .note{margin-top:16px;font-size:13px;line-height:1.5;color:var(--muted);}
-
-  @media (max-width:560px){
-    .topbar{height:calc(60px + var(--safe-top));padding-left:16px;padding-right:16px;}
-    .brand{font-size:21px;gap:10px;}
-    .brand img{width:34px;height:34px;border-radius:10px;}
-    .pill{height:38px;padding:0 16px;font-size:13px;}
-    main{padding-top:24px;}
-    .card{padding:30px 20px 24px;border-radius:20px;}
-    .avatar{width:104px;height:104px;margin-bottom:20px;}
-    .title{font-size:26px;}
-    .subtitle{font-size:16px;}
-    .desc{font-size:17px;}
-    .actions{margin-top:26px;}
-    .btn{width:100%;max-width:340px;padding:0 16px;font-size:15px;letter-spacing:0.02em;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .btn,.pill,.ghost{transition:none;}
-    .fade-in{animation:none;}
-  }
-</style>
+<link rel="stylesheet" href="../assets/sub.css">
+<script>try{if(localStorage.getItem("mayas-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 </head>
 <body>
 

@@ -10,7 +10,7 @@
 
     <meta name="description" data-i18n-attr="content" data-i18n="meta_description" content="Mayas — бесплатный мессенджер с открытым кодом для Android и веба: чаты, звонки, группы, каналы, несколько аккаунтов и кастомизация профиля. Скачать APK.">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#5b3fa0">
     <link rel="canonical" href="https://mayasapp.ru/">
 
     <meta property="og:type" content="website">
@@ -35,469 +35,73 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Golos+Text:wght@400;500;600&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
-
-<header class="navbar">
-    <div class="container nav-content">
-
-        <div class="logo">
-            <img class="logo-icon" src="assets/app_icon.png" alt="Mayas">
-            <span>Mayas</span>
-        </div>
-
-        <nav id="siteNav">
-            <a href="#features" data-i18n="nav_features">Возможности</a>
-            <a href="#screenshots" data-i18n="nav_screenshots">Скриншоты</a>
-            <a href="#download" data-i18n="nav_download">Скачать</a>
-            <a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a>
-            <a href="#faq" data-i18n="nav_faq">FAQ</a>
-            <a href="https://mayas-47778.web.app/" target="_blank" rel="noopener" class="nav-mobile-web" data-i18n="nav_web">Веб-версия</a>
-            <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="nav-mobile-download" data-apk data-i18n="download_btn">Скачать APK</a>
-        </nav>
-
-        <div class="nav-buttons">
-            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            </button>
-
-            <div class="lang-switch">
-                <select id="langSelect" aria-label="Language">
-                    <option value="ru">RU</option>
-                    <option value="en">EN</option>
-                    <option value="es">ES</option>
-                    <option value="de">DE</option>
-                    <option value="ja">JA</option>
-                </select>
-            </div>
-
-            <a href="https://mayas-47778.web.app/" class="nav-link-btn" target="_blank" rel="noopener" data-i18n="nav_web">
-                Веб-версия
-            </a>
-
-            <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="nav-button" data-apk target="_blank" rel="noopener noreferrer" data-i18n="nav_download_btn">
-                Скачать
-            </a>
-
-            <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
-                <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-            </button>
-        </div>
-
-    </div>
-</header>
-
+<header class="navbar"><div class="container nav-content">
+<a class="logo" href="./" style="text-decoration:none"><img class="logo-icon" src="assets/app_icon.png" alt="Mayas"><span>Mayas</span></a>
+<nav id="siteNav"><a href="#features" data-i18n="nav_features">Возможности</a><a href="#screenshots" data-i18n="nav_screenshots">Скриншоты</a><a href="#download" data-i18n="nav_download">Скачать</a><a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a><a href="#faq" data-i18n="nav_faq"><details class="faq-item reveal"><summary><span data-i18n="faq_q1">Mayas — это официальный Telegram?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a1">Нет. Mayas — самостоятельный независимый проект, разрабатываемый с нуля. Он не связан с Telegram, WhatsApp или другими мессенджерами.</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q2">На каких платформах доступен Mayas?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a2">Android — через APK из GitHub Releases, а также веб-версия, которая открывается прямо в браузере без установки.</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q3">Сколько стоит Mayas?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a3">Приложение бесплатно, исходный код открыт и доступен на GitHub. Подписка MAYAS+ пока в разработке (WIP).</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q4">Почему APK, а не Google Play?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a4">Mayas — молодой независимый проект, публикация в Google Play пока не выполнена. APK устанавливается напрямую и обновляется через GitHub Releases.</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q5">Как сообщить об ошибке или предложить идею?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a5">Через Issues в репозитории проекта на GitHub — ссылку можно найти в шапке сайта.</p></details></a><a href="https://mayas-47778.web.app/" class="nav-mobile-web" target="_blank" rel="noopener" data-i18n="nav_web">Веб-версия</a><a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="nav-mobile-download" data-apk data-i18n="download_btn">Скачать APK</a></nav>
+<div class="nav-buttons"><button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="i-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+<div class="lang-switch"><select id="langSelect" aria-label="Language"><option value="ru">RU</option><option value="en">EN</option><option value="es">ES</option><option value="de">DE</option><option value="ja">JA</option></select></div>
+<a href="https://mayas-47778.web.app/" class="nav-link-btn" target="_blank" rel="noopener" data-i18n="nav_web">Веб-версия</a>
+<a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="nav-button" data-apk target="_blank" rel="noopener noreferrer" data-i18n="nav_download_btn">Скачать</a>
+<button id="menuToggle" class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><svg class="i-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="i-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div></header>
 <main>
-<section class="hero">
-
-    <div class="hero-bg"></div>
-
-    <div class="container hero-content">
-
-        <div class="hero-left">
-            <a href="https://github.com/dan1eIDT/Mayas/releases" class="version-badge" id="versionBadge" target="_blank" rel="noopener" hidden>
-                <span class="version-dot"></span>
-                <span id="versionBadgeText"></span>
-            </a>
-
-            <h1 data-i18n-html="hero_title">
-                Mayas — общение<br>
-                без границ
-            </h1>
-
-            <p data-i18n="hero_desc">
-                Современный мессенджер с чатами, звонками,
-                группами и глубокой кастомизацией профиля.
-            </p>
-
-            <div class="hero-pills" aria-label="Mayas highlights">
-                <span data-i18n="hero_pill1">Android</span>
-                <span data-i18n="hero_pill2">Web</span>
-                <span data-i18n="hero_pill3">Open source</span>
-            </div>
-
-            <div class="hero-buttons">
-
-                <a href="#download" class="btn-primary" data-i18n="hero_btn_download">
-                    Скачать APK
-                </a>
-
-                <a href="https://mayas-47778.web.app/" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero_btn_web">
-                    Веб-версия
-                </a>
-
-                <a href="https://github.com/dan1eIDT" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero_btn_github">
-                    GitHub создателя
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="hero-right">
-
-            <div class="hero-device-wrap">
-                <div class="float-card float-card-top">
-                    <span class="float-card-dot"></span>
-                    <div><strong>IDT</strong><small data-i18n="float_online">в сети</small></div>
-                </div>
-                <div class="phone">
-                    <div class="phone-shot">
-                        <img src="assets/hero.webp" alt="Диалог в мессенджере Mayas для Android" fetchpriority="high">
-                    </div>
-                </div>
-                <div class="float-card float-card-bottom">
-                    <span class="float-card-icon">✦</span>
-                    <div><strong data-i18n="float_custom">Смотри </strong><small data-i18n="float_profile">че могу</small></div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="platform-strip">
-    <div class="container platform-strip-inner reveal">
-        <span class="platform-kicker" data-i18n="platform_kicker">Один аккаунт - круто</span>
-        <div class="platform-items">
-            <span><b>01</b> Android</span>
-            <span><b>02</b> Web</span>
-            <span><b>03</b> GitHub</span>
-        </div>
-    </div>
-</section>
-
-<section class="showcase">
-    <div class="container">
-        <div class="section-heading reveal">
-            <span class="section-kicker" data-i18n="showcase_kicker">Внутри Mayas</span>
-            <h2 data-i18n="showcase_title">просто список функций</h2>
-            <p data-i18n="showcase_desc">Интерфейс построен вокруг общения (наверное)</p>
-        </div>
-
-        <div class="showcase-grid">
-            <article class="showcase-card showcase-card-large reveal">
-                <div class="showcase-copy">
-                    <span class="showcase-number">01</span>
-                    <h3 data-i18n="showcase1_title">Чаты без лишнего шума</h3>
-                    <p data-i18n="showcase1_desc">Текст, медиа, реакции и оформление сообщений - всё. я текст забыл</p>
-                </div>
-                <div class="showcase-image"><img src="assets/screenshot1.webp" alt="Mayas — список чатов" loading="lazy"></div>
-            </article>
-
-            <article class="showcase-card reveal">
-                <div class="showcase-copy">
-                    <span class="showcase-number">02</span>
-                    <h3 data-i18n="showcase2_title">Профиль — часть интерфейса</h3>
-                    <p data-i18n="showcase2_desc">Рамки, свечение и статусы позволяют сделать страницу пользователя узнаваемой.</p>
-                </div>
-                <div class="showcase-image"><img src="assets/screenshot7.webp" alt="Mayas — профиль" loading="lazy"></div>
-            </article>
-
-            <article class="showcase-card reveal">
-                <div class="showcase-copy">
-                    <span class="showcase-number">03</span>
-                    <h3 data-i18n="showcase3_title">Йоу крутой магазин</h3>
-                    <p data-i18n="showcase3_desc">Цены дорогие правда</p>
-                </div>
-                <div class="showcase-image"><img src="assets/screenshot4.webp" alt="Mayas — магазин" loading="lazy"></div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section id="features" class="features">
-    <div class="container">
-        <div class="section-heading reveal">
-            <h2 data-i18n="features_title">Возможности</h2>
-            <p data-i18n="features_desc">Нажми на категорию и посмотри, как она выглядит внутри приложения.</p>
-        </div>
-
-        <div class="feature-explorer reveal">
-            <div class="feature-tabs" role="tablist" aria-label="Mayas features">
-                <button class="feature-tab is-active" type="button" role="tab" aria-selected="true" data-feature="chat"><span>01</span><b data-i18n="feature1_title">Чаты</b></button>
-                <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="messages"><span>02</span><b data-i18n="feature5_title">Сообщения</b></button>
-                <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="profile"><span>03</span><b data-i18n="feature_profile_title">Профиль</b></button>
-                <button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="community"><span>04</span><b data-i18n="feature4_title">Сообщества</b></button>
-            </div>
-            <div class="feature-preview">
-                <div class="feature-preview-copy">
-                    <h3 id="featurePreviewTitle">Чаты</h3>
-                    <p id="featurePreviewDesc">Личные сообщения и групповые беседы.</p>
-                    <div class="feature-preview-meta"><span id="featurePreviewTag">CHAT</span><span data-i18n="feature_switch_hint">Выбери другую вкладку</span></div>
-                </div>
-                <div class="feature-preview-device"><img id="featurePreviewImage" src="assets/screenshot1.webp" alt="Mayas — чаты" loading="lazy"></div>
-            </div>
-        </div>
-
-        <div class="features-grid feature-mini-grid">
-            <div class="card reveal"><div class="icon"><span>✦</span></div><h3 data-i18n="feature2_title">Звонки</h3><p data-i18n="feature2_desc">Голосовая и видеосвязь.</p></div>
-            <div class="card reveal"><div class="icon"><span>⌁</span></div><h3 data-i18n="feature6_title">Снова магазин</h3><p data-i18n="feature6_desc">Не хочешь тут кучить чет , м?</p></div>
-            <div class="card reveal"><div class="icon"><span>◈</span></div><h3 data-i18n="feature7_title">Кастомизация</h3><p data-i18n="feature7_desc">Темы, рамки и оформление профиля.</p></div>
-        </div>
-
-        <div class="accounts-card reveal">
-            <div class="accounts-copy">
-                <span class="section-kicker" data-i18n="accounts_kicker">АККАУНТЫ</span>
-                <h3 data-i18n="accounts_title">Несколько аккаунтов</h3>
-                <p data-i18n="accounts_desc">Переключайся между профилями в пару касаний.</p>
-            </div>
-            <div class="accounts-visual">
-                <img src="assets/accounts-sheet.webp" alt="Mayas — переключение аккаунтов" loading="lazy">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="screenshots" class="screenshots">
-
-    <div class="container">
-
-        <div class="screenshots-head">
-            <h2 data-i18n="screenshots_title">Скриншоты</h2>
-            <p data-i18n="screenshots_desc">Как маяс выглядит изнутри — от чатов до кастомизации профиля.</p>
-            <p class="screenshots-hint" data-i18n="screenshots_hint">Нажми на скриншот, чтобы посмотреть крупно</p>
-        </div>
-
-        <div class="screenshots-grid">
-
-            <div class="shot reveal" data-cap="shot_cap_1">
-                <span class="shot-index">01</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot1.webp" alt="Mayas — список чатов" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_2">
-                <span class="shot-index">02</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot5.webp" alt="Mayas — канал" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_3">
-                <span class="shot-index">03</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot7.webp" alt="Mayas — профиль" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_4">
-                <span class="shot-index">04</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot4.webp" alt="Mayas — магазин" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_5">
-                <span class="shot-index">05</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot2.webp" alt="Mayas — настройки" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_6">
-                <span class="shot-index">06</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot3.webp" alt="Mayas — подписка MAYAS+" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_7">
-                <span class="shot-index">07</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot6.webp" alt="Mayas — Mesh-сеть" loading="lazy">
-                </div>
-            </div>
-
-            <div class="shot reveal" data-cap="shot_cap_8">
-                <span class="shot-index">08</span>
-                <div class="shot-notch"></div>
-                <div class="shot-inner">
-                    <img src="assets/screenshot9.webp" alt="Mayas — профиль канала" loading="lazy">
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="stats">
-    <div class="container stats-grid reveal">
-        <div><span class="stat-mark">01</span><h3>Android</h3><p data-i18n="stats1_label">Основное приложение</p></div>
-        <div><span class="stat-mark">02</span><h3>Web</h3><p data-i18n="stats2_label">Работает прямо в браузере</p></div>
-        <div><span class="stat-mark">03</span><h3>GitHub</h3><p data-i18n="stats3_label">Исходный код проекта</p></div>
-    </div>
-</section>
-
-<section id="roadmap" class="roadmap">
-    <div class="container">
-        <div class="section-heading reveal">
-            <span class="section-kicker" data-i18n="roadmap_kicker">ЧТО ДАЛЬШЕ</span>
-            <h2 data-i18n="roadmap_title">Mayas продолжает расти</h2>
-            <p data-i18n="roadmap_desc">Здесь можно следить за направлениями проекта без обещаний точных дат.</p>
-        </div>
-        <div class="roadmap-grid">
-            <article class="roadmap-card is-done reveal"><span class="roadmap-state" data-i18n="roadmap_done">ГОТОВО</span><h3 data-i18n="roadmap_done_title">Основа Mayas</h3><ul><li data-i18n="roadmap_done_1">Android-приложение</li><li data-i18n="roadmap_done_2">Чаты и сообщества</li><li data-i18n="roadmap_done_3">Web-версия</li></ul></article>
-            <article class="roadmap-card is-next reveal"><span class="roadmap-state" data-i18n="roadmap_next">В РАБОТЕ</span><h3 data-i18n="roadmap_next_title">Развитие общения</h3><ul><li data-i18n="roadmap_next_1">Поиск и навигация</li><li data-i18n="roadmap_next_2">Эффекты и оформление сообщений</li><li data-i18n="roadmap_next_3">Улучшения звонков</li></ul></article>
-            <article class="roadmap-card reveal"><span class="roadmap-state" data-i18n="roadmap_plan">ПЛАНЫ</span><h3 data-i18n="roadmap_plan_title">Дальнейшие обновления</h3><ul><li data-i18n="roadmap_plan_1">Новые возможности профиля</li><li data-i18n="roadmap_plan_2">Новые инструменты общения</li><li data-i18n="roadmap_plan_3">Клиент для Windows </li></ul></article>
-        </div>
-    </div>
-</section>
-
-<section class="changelog">
-    <div class="container">
-        <div class="changelog-head reveal"><div><span class="section-kicker" data-i18n="changelog_kicker">GITHUB / RELEASES</span><h2 data-i18n="changelog_title">Последние обновления</h2><p data-i18n="changelog_desc">Список подтягивается напрямую из GitHub Releases.</p></div><a class="btn-secondary" href="https://github.com/dan1eIDT/Mayas/releases" target="_blank" rel="noopener" data-i18n="changelog_all">Все релизы</a></div>
-        <div id="releaseList" class="release-list" aria-live="polite"><div class="release-loading" data-i18n="changelog_loading">Загружаем релизы…</div></div>
-    </div>
-</section>
-
-<section id="faq" class="faq">
-
-    <div class="container">
-
-        <div class="faq-head reveal">
-            <h2 data-i18n="faq_title">Частые вопросы</h2>
-            <p data-i18n="faq_desc">Всё, что стоит знать перед установкой.</p>
-        </div>
-
-        <div class="faq-list">
-
-            <details class="faq-item reveal">
-                <summary>
-                    <span data-i18n="faq_q1">Mayas — это официальный Telegram?</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                </summary>
-                <p data-i18n="faq_a1">Нет. Mayas — самостоятельный независимый проект, разрабатываемый с нуля. Он не связан с Telegram, WhatsApp или другими мессенджерами.</p>
-            </details>
-
-            <details class="faq-item reveal">
-                <summary>
-                    <span data-i18n="faq_q2">На каких платформах доступен Mayas?</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                </summary>
-                <p data-i18n="faq_a2">Android — через APK из GitHub Releases, а также веб-версия, которая открывается прямо в браузере без установки.</p>
-            </details>
-
-            <details class="faq-item reveal">
-                <summary>
-                    <span data-i18n="faq_q3">Сколько стоит Mayas?</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                </summary>
-                <p data-i18n="faq_a3">Приложение полностью бесплатно. Исходный код открыт и доступен на GitHub.</p>
-            </details>
-
-            <details class="faq-item reveal">
-                <summary>
-                    <span data-i18n="faq_q4">Почему APK, а не Google Play?</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                </summary>
-                <p data-i18n="faq_a4">Mayas — молодой независимый проект, публикация в Google Play пока не выполнена. APK устанавливается напрямую и обновляется через GitHub Releases.</p>
-            </details>
-
-            <details class="faq-item reveal">
-                <summary>
-                    <span data-i18n="faq_q5">Как сообщить об ошибке или предложить идею?</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                </summary>
-                <p data-i18n="faq_a5">Через Issues в репозитории проекта на GitHub — ссылку можно найти в шапке сайта.</p>
-            </details>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="web-cta">
-    <div class="container web-cta-inner reveal">
-        <div class="web-cta-copy">
-            <span class="section-kicker" data-i18n="web_kicker">MAYAS WEB</span>
-            <h2 data-i18n="web_title">Открой Mayas прямо сейчас</h2>
-            <p data-i18n="web_desc">Не хочешь устанавливать APK? Веб-версия уже готова и открывается в браузере.</p>
-            <a href="https://mayas-47778.web.app/" class="btn-primary" target="_blank" rel="noopener" data-i18n="web_btn">Открыть веб-версию</a>
-        </div>
-        <div class="browser-mockup">
-            <div class="browser-bar"><span></span><span></span><span></span><div>mayas-47778.web.app</div></div>
-            <div class="browser-screen"><img src="assets/screenshot8.png" alt="Mayas Web" loading="lazy"></div>
-        </div>
-    </div>
-</section>
-
-<section id="download" class="download">
-
-    <div class="container download-layout" id="downloadLayout">
-
-        <div class="download-copy">
-
-            <h2 data-i18n="download_title">Готов попробовать?</h2>
-
-            <p data-i18n="download_desc">
-                Скачай Mayas и присоединяйся уже сегодня.
-            </p>
-
-            <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary big" data-apk data-i18n="download_btn">
-                Скачать APK
-            </a>
-
-            <p class="apk-meta" data-apk-meta hidden></p>
-
-            <a href="install/" class="download-install" data-install-link data-i18n="download_install">Как установить</a>
-
-        </div>
-
-        <div class="download-qr" id="downloadQr" hidden>
-            <div class="qr-box" id="qrBox"></div>
-            <strong data-i18n="qr_title">Скачать на телефон</strong>
-            <span data-i18n="qr_hint">Наведи камеру телефона на QR-код — откроется страница установки.</span>
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-<footer>
-
-    <div class="container footer-content">
-
-        <span>Project IDT 2026</span>
-
-        <div>
-            <a href="install/" data-install-link data-i18n="download_install">How to install</a>
-            <a href="tos.html" data-i18n="footer_terms">Terms</a>
-            <a href="https://github.com/dan1eIDT" target="_blank" rel="noopener">GitHub</a>
-        </div>
-
-    </div>
-
-</footer>
-
-<div class="mobile-cta" id="mobileCta">
-    <a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary" data-apk data-i18n="download_btn">Скачать APK</a>
+<section class="hero"><div class="container hero-content">
+<div class="hero-left">
+<a href="https://github.com/dan1eIDT/Mayas/releases" class="version-badge" id="versionBadge" target="_blank" rel="noopener" hidden><span id="versionBadgeText"></span></a>
+<h1 data-i18n-html="hero_title">Mayas — общение<br>без границ</h1>
+<p data-i18n="hero_desc">Современный мессенджер с чатами, звонками, группами и глубокой кастомизацией профиля.</p>
+<div class="hero-pills"><span data-i18n="hero_pill1">Android</span><span data-i18n="hero_pill2">Web</span><span data-i18n="hero_pill3">Open source</span></div>
+<div class="hero-buttons"><a href="#download" class="btn-primary" data-i18n="hero_btn_download">Скачать APK</a><a href="https://mayas-47778.web.app/" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero_btn_web">Веб-версия</a><a href="https://github.com/dan1eIDT" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero_btn_github">GitHub создателя</a></div>
 </div>
-
-<script src="assets/vendor/qrcode.min.js"></script>
-<script src="assets/qr.js"></script>
-<script src="assets/apk.js"></script>
-<script>
+<div class="hero-device-wrap">
+<div class="float-card float-card-top"><span class="float-card-dot"></span><div><strong>IDT</strong><small data-i18n="float_online">в сети</small></div></div>
+<div class="phone"><img src="assets/hero.webp" alt="Диалог в мессенджере Mayas для Android" fetchpriority="high"></div>
+<div class="float-card float-card-bottom"><span class="float-card-icon">✦</span><div><strong data-i18n="float_custom">Смотри</strong><small data-i18n="float_profile">че могу</small></div></div>
+</div></div></section>
+<section class="showcase"><div class="container">
+<div class="section-heading reveal"><h2 data-i18n="showcase_title">просто список функций</h2><p data-i18n="showcase_desc">Интерфейс построен вокруг общения (наверное)</p></div>
+<div class="showcase-grid">
+<article class="showcase-card reveal"><div class="showcase-copy"><h3 data-i18n="showcase1_title">Чаты без лишнего шума</h3><p data-i18n="showcase1_desc">Текст, медиа, реакции и оформление сообщений - всё. я текст забыл</p></div><div class="showcase-image"><img src="assets/screenshot1.webp" alt="Mayas — список чатов" loading="lazy"></div></article>
+<article class="showcase-card reveal"><div class="showcase-copy"><h3 data-i18n="showcase2_title">Профиль — часть интерфейса</h3><p data-i18n="showcase2_desc">Рамки, свечение и статусы позволяют сделать страницу пользователя узнаваемой.</p></div><div class="showcase-image"><img src="assets/screenshot7.webp" alt="Mayas — профиль" loading="lazy"></div></article>
+<article class="showcase-card reveal"><div class="showcase-copy"><h3 data-i18n="showcase3_title">Йоу крутой магазин</h3><p data-i18n="showcase3_desc">Цены дорогие правда</p></div><div class="showcase-image"><img src="assets/screenshot4.webp" alt="Mayas — магазин" loading="lazy"></div></article>
+</div></div></section>
+<section id="features" class="features"><div class="container">
+<div class="section-heading reveal"><h2 data-i18n="features_title">Возможности</h2><p data-i18n="features_desc">Нажми на категорию и посмотри, как она выглядит внутри Mayas.</p></div>
+<div class="feature-explorer reveal">
+<div class="feature-tabs" role="tablist"><button class="feature-tab is-active" type="button" role="tab" aria-selected="true" data-feature="chat"><b data-i18n="feature1_title">Чаты</b></button><button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="messages"><b data-i18n="feature5_title">Сообщения</b></button><button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="profile"><b data-i18n="feature_profile_title">Профиль</b></button><button class="feature-tab" type="button" role="tab" aria-selected="false" data-feature="community"><b data-i18n="feature4_title">Сообщества</b></button></div>
+<div class="feature-preview"><div class="feature-preview-copy"><h3 id="featurePreviewTitle">Чаты</h3><p id="featurePreviewDesc">Личные сообщения и групповые беседы.</p><p class="feature-preview-meta" data-i18n="feature_switch_hint">Выбери другую вкладку</p></div><div class="feature-preview-device"><img id="featurePreviewImage" src="assets/screenshot1.webp" alt="Mayas — чаты" loading="lazy"></div></div>
+</div>
+<div class="feature-mini-grid">
+<div class="card reveal"><h3 data-i18n="feature2_title">Звонки</h3><p data-i18n="feature2_desc">Голосовая и видеосвязь.</p></div>
+<div class="card reveal"><h3 data-i18n="feature6_title">Снова магазин</h3><p data-i18n="feature6_desc">Не хочешь тут кучить чет , м?</p></div>
+<div class="card reveal"><h3 data-i18n="feature7_title">Кастомизация</h3><p data-i18n="feature7_desc">Темы, рамки и оформление профиля.</p></div>
+</div>
+<div class="accounts-card reveal"><div class="accounts-copy"><h3 data-i18n="accounts_title">Несколько аккаунтов</h3><p data-i18n="accounts_desc">Переключайся между профилями в пару касаний.</p></div><div class="accounts-visual"><img src="assets/accounts-sheet.webp" alt="Mayas — переключение аккаунтов" loading="lazy"></div></div>
+</div></section>
+<section id="screenshots" class="screenshots"><div class="container">
+<div class="screenshots-head"><h2 data-i18n="screenshots_title">Скриншоты</h2><p data-i18n="screenshots_desc">Как маяс выглядит изнутри — от чатов до кастомизации профиля.</p><p data-i18n="screenshots_hint">Нажми на скриншот, чтобы посмотреть крупно</p></div>
+<div class="screenshots-grid"><div class="shot reveal" data-cap="shot_cap_1"><div class="shot-inner"><img src="assets/screenshot1.webp" alt="Mayas — список чатов" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_2"><div class="shot-inner"><img src="assets/screenshot5.webp" alt="Mayas — канал" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_3"><div class="shot-inner"><img src="assets/screenshot7.webp" alt="Mayas — профиль" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_4"><div class="shot-inner"><img src="assets/screenshot4.webp" alt="Mayas — магазин" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_5"><div class="shot-inner"><img src="assets/screenshot2.webp" alt="Mayas — настройки" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_6"><div class="shot-inner"><img src="assets/screenshot3.webp" alt="Mayas — подписка MAYAS+" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_7"><div class="shot-inner"><img src="assets/screenshot6.webp" alt="Mayas — Mesh-сеть" loading="lazy"></div></div><div class="shot reveal" data-cap="shot_cap_8"><div class="shot-inner"><img src="assets/screenshot9.webp" alt="Mayas — профиль канала" loading="lazy"></div></div></div></div></section>
+<section id="roadmap" class="roadmap"><div class="container">
+<div class="section-heading reveal"><h2 data-i18n="roadmap_title">Mayas продолжает расти</h2><p data-i18n="roadmap_desc">Здесь можно следить за направлениями проекта без обещаний точных дат.</p></div>
+<div class="roadmap-grid"><article class="roadmap-card is-done reveal"><span class="roadmap-state" data-i18n="roadmap_done">ГОТОВО</span><h3 data-i18n="roadmap_done_title">Основа Mayas</h3><ul><li data-i18n="roadmap_done_1">Android-приложение</li><li data-i18n="roadmap_done_2">Чаты и сообщества</li><li data-i18n="roadmap_done_3">Web-версия</li></ul></article><article class="roadmap-card is-next reveal"><span class="roadmap-state" data-i18n="roadmap_next">В РАБОТЕ</span><h3 data-i18n="roadmap_next_title">Развитие общения</h3><ul><li data-i18n="roadmap_next_1">Поиск и навигация</li><li data-i18n="roadmap_next_2">Эффекты и оформление сообщений</li><li data-i18n="roadmap_next_3">Улучшения звонков</li></ul></article><article class="roadmap-card  reveal"><span class="roadmap-state" data-i18n="roadmap_plan">ПЛАНЫ</span><h3 data-i18n="roadmap_plan_title">Дальнейшие обновления</h3><ul><li data-i18n="roadmap_plan_1">Новые возможности профиля</li><li data-i18n="roadmap_plan_2">Новые инструменты общения</li><li data-i18n="roadmap_plan_3">Клиент для Windows</li></ul></article></div></div></section>
+<section class="changelog"><div class="container">
+<div class="changelog-head reveal"><div><h2 data-i18n="changelog_title">Последние обновления</h2><p data-i18n="changelog_desc">Список подтягивается напрямую из GitHub Releases.</p></div><a class="btn-secondary" href="https://github.com/dan1eIDT/Mayas/releases" target="_blank" rel="noopener" data-i18n="changelog_all">Все релизы</a></div>
+<div id="releaseList" class="release-list" aria-live="polite"><div class="release-loading" data-i18n="changelog_loading">Загружаем релизы…</div></div></div></section>
+<section id="faq" class="faq"><div class="container"><div class="faq-head reveal"><h2 data-i18n="faq_title">Частые вопросы</h2><p data-i18n="faq_desc">Всё, что стоит знать перед установкой.</p></div><div class="faq-list"><details class="faq-item reveal"><summary><span data-i18n="faq_q1">Mayas — это официальный Telegram?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a1">Нет. Mayas — самостоятельный независимый проект, разрабатываемый с нуля. Он не связан с Telegram, WhatsApp или другими мессенджерами.</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q2">На каких платформах доступен Mayas?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a2">Android — через APK из GitHub Releases, а также веб-версия, которая открывается прямо в браузере без установки.</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q3">Сколько стоит Mayas?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a3">Приложение бесплатно, исходный код открыт и доступен на GitHub. Подписка MAYAS+ пока в разработке (WIP).</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q4">Почему APK, а не Google Play?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a4">Mayas — молодой независимый проект, публикация в Google Play пока не выполнена. APK устанавливается напрямую и обновляется через GitHub Releases.</p></details><details class="faq-item reveal"><summary><span data-i18n="faq_q5">Как сообщить об ошибке или предложить идею?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i18n="faq_a5">Через Issues в репозитории проекта на GitHub — ссылку можно найти в шапке сайта.</p></details></div></div></section>
+<section class="web-cta"><div class="container web-cta-inner reveal"><div class="web-cta-copy"><h2 data-i18n="web_title">Открой Mayas прямо сейчас</h2><p data-i18n="web_desc">Не хочешь устанавливать APK? Веб-версия уже готова и открывается в браузере.</p><a href="https://mayas-47778.web.app/" class="btn-primary" target="_blank" rel="noopener" data-i18n="web_btn">Открыть веб-версию</a></div>
+<div class="browser-mockup"><div class="browser-bar"><span></span><span></span><span></span><div>mayas-47778.web.app</div></div><img src="assets/screenshot8.png" alt="Mayas Web" loading="lazy"></div></div></section>
+<section id="download" class="download"><div class="container download-layout" id="downloadLayout">
+<div class="download-copy"><h2 data-i18n="download_title">Готов попробовать?</h2><p data-i18n="download_desc">Скачай Mayas и присоединяйся уже сегодня.</p><a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary big" data-apk data-i18n="download_btn">Скачать APK</a><p class="apk-meta" data-apk-meta hidden></p><a href="install/" class="download-install" data-install-link data-i18n="download_install">Как установить</a></div>
+<div class="download-qr" id="downloadQr" hidden><div class="qr-box" id="qrBox"></div><strong data-i18n="qr_title">Скачать на телефон</strong><span data-i18n="qr_hint">Наведи камеру телефона на QR-код — откроется страница установки.</span></div>
+</div></section>
+</main>
+<footer><div class="container footer-content"><span>Project IDT 2026</span><div><a href="install/" data-install-link data-i18n="download_install">Как установить</a><a href="status/" data-i18n="footer_status">Статус</a><a href="tos.html" data-i18n="footer_terms">Условия</a><a href="https://github.com/dan1eIDT" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+<div class="mobile-cta" id="mobileCta"><a href="https://github.com/dan1eIDT/Mayas/releases/latest" class="btn-primary" data-apk data-i18n="download_btn">Скачать APK</a></div>
+<script src="assets/vendor/qrcode.min.js"></script><script src="assets/qr.js"></script><script src="assets/apk.js"></script><script>
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -667,7 +271,7 @@
       download_install: "Как установить",
       qr_title: "Скачать на телефон",
       qr_hint: "Наведи камеру телефона на QR-код — откроется страница установки.",
-      footer_terms: "Условия",
+      footer_terms: "Условия", footer_status: "Статус",
       nav_faq: "FAQ",
       faq_title: "Частые вопросы",
       faq_desc: "Всё, что стоит знать перед установкой.",
@@ -765,7 +369,7 @@
       download_install: "How to install",
       qr_title: "Get it on your phone",
       qr_hint: "Point your phone’s camera at the QR code to open the install page.",
-      footer_terms: "Terms",
+      footer_terms: "Terms", footer_status: "Status",
       nav_faq: "FAQ",
       faq_title: "Frequently asked questions",
       faq_desc: "Everything worth knowing before you install.",
@@ -858,7 +462,7 @@
       download_install: "Cómo instalar",
       qr_title: "Descárgala en tu móvil",
       qr_hint: "Apunta la cámara del móvil al código QR para abrir la página de instalación.",
-      footer_terms: "Términos",
+      footer_terms: "Términos", footer_status: "Estado",
       nav_faq: "FAQ",
       faq_title: "Preguntas frecuentes",
       faq_desc: "Todo lo que conviene saber antes de instalar.",
@@ -951,7 +555,7 @@
       download_install: "So installierst du es",
       qr_title: "Aufs Handy laden",
       qr_hint: "Richte die Handykamera auf den QR-Code, um die Installationsseite zu öffnen.",
-      footer_terms: "Nutzungsbedingungen",
+      footer_terms: "Nutzungsbedingungen", footer_status: "Status",
       nav_faq: "FAQ",
       faq_title: "Häufig gestellte Fragen",
       faq_desc: "Alles Wichtige vor der Installation.",
@@ -1044,7 +648,7 @@
       download_install: "インストール方法",
       qr_title: "スマホで入手",
       qr_hint: "スマホのカメラでQRコードを読み取ると、インストールページが開きます。",
-      footer_terms: "利用規約",
+      footer_terms: "利用規約", footer_status: "ステータス",
       nav_faq: "FAQ",
       faq_title: "よくある質問",
       faq_desc: "インストール前に知っておきたいこと。",
@@ -1237,7 +841,6 @@
 
   loadReleases();
 </script>
-
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
     <button class="lb-btn lb-close" id="lbClose" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1253,6 +856,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
     </button>
 </div>
+
 
 <script>
 (function () {
@@ -1392,6 +996,5 @@
   refreshLabels();
 })();
 </script>
-
 </body>
 </html>
